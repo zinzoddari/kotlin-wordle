@@ -20,11 +20,11 @@ class WordExtractor(
      * 특정 인덱스의 단어를 가져옵니다.
      */
     fun get(index: Int): Word {
-        if (index < 0 || index >= getSize()) {
-            throw IllegalArgumentException("Index out of range: $index")
+        require(index >= 0 && index < getSize()) {
+            "Index out of range: $index"
         }
 
-        return Word(value.get(index))
+        return Word(value[index])
     }
 
     /**
