@@ -6,8 +6,8 @@ data class WordIndex(
     val value: Int
 ) {
     companion object {
-        const val MIN_INDEX: Int = 0
-        val BASE_DATE: LocalDate = LocalDate.of(2021, 6, 19)
+        private const val MIN_INDEX: Int = 0
+        private val BASE_DATE: LocalDate = LocalDate.of(2021, 6, 19)
 
         fun create(date: LocalDate, arraySize: Int): WordIndex {
             return extract(date, arraySize)

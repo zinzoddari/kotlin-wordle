@@ -1,11 +1,12 @@
 package wordle
 
+
+// fun <K,V> MutableMap<K,V>.notContainsKey(key: K): Boolean = this.containsKey(key).not()
+
 class WordResolver(
     private val word: Word,
-    private val counter: MutableMap<Char, Int>
+    private val counter: MutableMap<Char, Int> = init(word)
 ) {
-    constructor(word: Word) : this(word, init(word))
-
     fun check(input: Word): List<Result> {
         val result = MutableList(word.value.length) { Result.ABSENT }
         val answerArray = word.value.toCharArray()
@@ -54,3 +55,5 @@ class WordResolver(
         }
     }
 }
+
+

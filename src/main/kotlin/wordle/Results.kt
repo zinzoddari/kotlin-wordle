@@ -1,7 +1,7 @@
 package wordle
 
 data class Results(
-    val values: List<Result>
+    private val values: List<Result>
 ) {
     fun convert(): String {
         val builder = StringBuilder()
@@ -19,3 +19,4 @@ data class Results(
         return values.all { it == Result.CORRECT }
     }
 }
+
