@@ -2,9 +2,8 @@ package wordle
 
 class WordResolver(
     private val word: Word,
-    private val counter: MutableMap<Char, Int>
+    private val counter: MutableMap<Char, Int> = init(word)
 ) {
-    constructor(word: Word) : this(word, init(word))
 
     fun check(input: Word): List<Result> {
         val result = MutableList(word.value.length) { Result.ABSENT }
