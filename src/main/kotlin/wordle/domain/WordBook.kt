@@ -1,6 +1,7 @@
 package wordle.domain
 
-class WordBook(
+@JvmInline
+value class WordBook(
     private val values: List<Word>
 ) {
     fun getSize(): Int {

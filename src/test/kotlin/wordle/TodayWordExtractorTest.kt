@@ -9,7 +9,7 @@ import java.time.LocalDate
 
 class TodayWordExtractorTest {
     val fileName: String = "testWord.txt"
-    val wordBookExtractor = WordBookExtractor.create(fileName)
+    val wordBookExtractor = WordBookExtractor.extract(fileName)
 
     @Test
     fun 오늘의_단어를_반환한다() {

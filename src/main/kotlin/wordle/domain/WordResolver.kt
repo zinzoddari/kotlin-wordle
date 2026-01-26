@@ -1,6 +1,5 @@
 package wordle.domain
 
-
 // fun <K,V> MutableMap<K,V>.notContainsKey(key: K): Boolean = this.containsKey(key).not()
 
 class WordResolver(

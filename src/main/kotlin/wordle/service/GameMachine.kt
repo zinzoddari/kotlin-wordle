@@ -14,7 +14,7 @@ import wordle.translation.WordBookExtractor
 import java.time.LocalDate
 
 class GameMachine(
-    private val wordBook: WordBook = WordBookExtractor.Companion.create("words.txt"),
+    private val wordBook: WordBook = WordBookExtractor.extract("words.txt"),
     private val todayWord: Word = TodayWordExtractor(wordBook).generateAnswer(LocalDate.now())
 ) {
     private val wordValidator: WordValidator = WordValidator(wordBook)

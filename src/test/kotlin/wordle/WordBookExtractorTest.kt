@@ -19,7 +19,7 @@ class WordBookExtractorTest {
     fun test01() {
         // arrange
         val fileName = "testWord.txt"
-        val extractor: WordBookExtractor = WordBookExtractor.create(fileName)
+        val extractor: WordBookExtractor = WordBookExtractor.extract(fileName)
 
         // act
         val sut: Int = extractor.getSize()
@@ -34,7 +34,7 @@ class WordBookExtractorTest {
     fun test02() {
         // arrange
         val fileName = "testWord.txt"
-        val extractor: WordBookExtractor = WordBookExtractor.create(fileName)
+        val extractor: WordBookExtractor = WordBookExtractor.extract(fileName)
         val index = 1;
 
         val expected: Word = Word("devlife")
@@ -51,7 +51,7 @@ class WordBookExtractorTest {
     fun test03() {
         // arrange
         val fileName = "testWord.txt"
-        val extractor: WordBookExtractor = WordBookExtractor.create(fileName)
+        val extractor: WordBookExtractor = WordBookExtractor.extract(fileName)
         val index = 30;
 
         // act & assert
@@ -63,7 +63,7 @@ class WordBookExtractorTest {
     fun test04() {
         // arrange
         val fileName = "testWord.txt"
-        val extractor = WordBookExtractor.create(fileName)
+        val extractor = WordBookExtractor.extract(fileName)
         val word = Word("devlife");
 
         // act
@@ -78,7 +78,7 @@ class WordBookExtractorTest {
     fun test05() {
         // arrange
         val fileName = "testWord.txt"
-        val extractor = WordBookExtractor.create(fileName)
+        val extractor = WordBookExtractor.extract(fileName)
         val word = Word("notex");
 
         // act

@@ -1,6 +1,7 @@
 package wordle.domain
 
-data class Word(
+@JvmInline
+value class Word(
     val value: String
 ) {
 
