@@ -14,7 +14,6 @@ class GameMachine(
         val extractor: WordExtractor = WordExtractor(fileReader)
         val wordGenerator = WordGenerator(extractor)
         val todayWord: Word = wordGenerator.generateAnswer(LocalDate.now())
-        println(todayWord.value)
 
         // 소개 하기
         Printer.introduce()

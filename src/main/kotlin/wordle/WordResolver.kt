@@ -6,9 +6,9 @@ class WordResolver(
 ) {
 
     fun check(input: Word): List<Result> {
-        val result = MutableList(word.value.length) { Result.ABSENT }
-        val answerArray = word.value.toCharArray()
-        val charArray = input.value.toCharArray()
+        val result = MutableList(word.length()) { Result.ABSENT }
+        val answerArray = word.toCharArray()
+        val charArray = input.toCharArray()
 
         // 인덱스와 char가 같은지 판단
         for (it in charArray.indices) {
@@ -47,9 +47,7 @@ class WordResolver(
 
     companion object {
         private fun init(word: Word): MutableMap<Char, Int> {
-            val wordString: String = word.value
-            return wordString.groupBy { it }
-                .mapValues { (_, v) -> v.size } as MutableMap<Char, Int>
+            return word.charCountMap()
         }
     }
 }
