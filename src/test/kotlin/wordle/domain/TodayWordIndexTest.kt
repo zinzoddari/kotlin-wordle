@@ -1,6 +1,6 @@
 package wordle.domain
 
-import org.assertj.core.api.Assertions
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
@@ -12,27 +12,27 @@ class TodayWordIndexTest {
 
     @ParameterizedTest
     @MethodSource("expectedWords")
-    @DisplayName("오늘의 단어 순번은 전달받은 날짜 빼기 2021년 6월 19일 나누기 배열의 크기이다")
+    @DisplayName("오늘의 단어 순번은 전달받은 날짜 빼기 2021년 6월 19일 나누기 배열의 크기입니다.")
     fun test01(date: LocalDate, arraySize: Int, expected: Long) {
         // arrange & act
-        val sut = TodayWordIndex.create(date, arraySize)
+        val sut = TodayWordIndex.fromDate(date, arraySize)
 
         // assert
-        Assertions.assertThat(sut.value).isEqualTo(expected)
+        assertThat(sut.value).isEqualTo(expected)
     }
 
     @Test
-    @DisplayName("전달받은 날짜가 2021년 6월 19일 이전이면 순번은 0이다")
+    @DisplayName("전달받은 날짜가 2021년 6월 19일 이전이면 순번은 0입니다.")
     fun test02() {
         // arrange
         val date = LocalDate.of(2020, 6, 19)
         val arraySize = 20
 
         // act
-        val sut = TodayWordIndex.create(date, arraySize)
+        val sut = TodayWordIndex.fromDate(date, arraySize)
 
         // assert
-        Assertions.assertThat(sut.value).isEqualTo(0)
+        assertThat(sut.value).isEqualTo(0)
     }
 
     companion object {

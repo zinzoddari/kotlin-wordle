@@ -19,7 +19,7 @@ class WordGenerator(
         val arraySize: Int = wordExtractor.getSize()
 
         // 2.오늘의 단어를 위한 index 추출한다.
-        val todayWordIndex: TodayWordIndex = TodayWordIndex.create(today, arraySize)
+        val todayWordIndex: TodayWordIndex = TodayWordIndex.fromDate(today, arraySize)
 
         // 3. 오늘의 단어를 반환한다.
         return wordExtractor.get(todayWordIndex.value)
