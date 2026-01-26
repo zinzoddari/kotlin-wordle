@@ -1,5 +1,6 @@
 package wordle
 
+import wordle.domain.TodayWordIndex
 import java.time.LocalDate
 
 
@@ -18,9 +19,9 @@ class WordGenerator(
         val arraySize: Int = wordExtractor.getSize()
 
         // 2.오늘의 단어를 위한 index 추출한다.
-        val wordIndex: WordIndex = WordIndex.create(today, arraySize)
+        val todayWordIndex: TodayWordIndex = TodayWordIndex.create(today, arraySize)
 
         // 3. 오늘의 단어를 반환한다.
-        return wordExtractor.get(wordIndex.value)
+        return wordExtractor.get(todayWordIndex.value)
     }
 }
