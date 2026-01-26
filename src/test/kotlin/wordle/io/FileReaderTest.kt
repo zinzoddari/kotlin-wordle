@@ -1,7 +1,7 @@
-package wordle
+package wordle.io
 
-import org.assertj.core.api.Assertions.assertThatThrownBy
-import org.assertj.core.api.SoftAssertions.assertSoftly
+import org.assertj.core.api.Assertions
+import org.assertj.core.api.SoftAssertions
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
@@ -13,18 +13,29 @@ class FileReaderTest {
     @ParameterizedTest
     @EmptySource
     @ValueSource(strings = [" "])
-    @DisplayName("파일을 읽을 때, 파일 이름이 빈 값의 경우 오류가 발생합니다.")
+    @DisplayName("파일을 읽을 때, 파일 이름이 빈 값의 경우 예외가 발생합니다.")
     fun test01(name: String) {
         // act & assert
-        assertThatThrownBy { FileReader.read(name) }
+        Assertions.assertThatThrownBy { FileReader.read(name) }
             .isInstanceOf(IllegalArgumentException::class.java)
             .hasMessage("파일명을 입력해주세요.")
     }
 
+    @Test
+    @DisplayName("전달받은 파일 이름이 존재하지 않으면 예외가 발생합니다.")
+    fun test02() {
+        // arrange
+        val name = "notExistFile.txt"
+
+        // act & assert
+        Assertions.assertThatThrownBy { FileReader.read(name) }
+            .isInstanceOf(IllegalArgumentException::class.java)
+            .hasMessage("파일이 존재하지 않습니다.")
+    }
 
     @Test
-    @DisplayName("읽어온 파일을 List<String> 형식으로 반환한다")
-    fun test02() {
+    @DisplayName("읽어온 파일을 List<String> 형식으로 반환합니다.")
+    fun test03() {
         // arrange
         val name = "testWord.txt"
 
@@ -32,21 +43,9 @@ class FileReaderTest {
         val sut = FileReader.read(name)
 
         // assert
-        assertSoftly {
+        SoftAssertions.assertSoftly {
             it.assertThat(sut).size().isEqualTo(2)
             it.assertThat(sut).containsExactlyInAnyOrder("zin", "devlife")
         }
-    }
-
-    @Test
-    @DisplayName("전달받은 파일 이름이 존재하지 않으면 에러가 발생한다")
-    fun test03() {
-        // arrange
-        val name = "notExistFile.txt"
-
-        // act & assert
-        assertThatThrownBy { FileReader.read(name) }
-            .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessage("파일이 존재하지 않습니다.")
     }
 }

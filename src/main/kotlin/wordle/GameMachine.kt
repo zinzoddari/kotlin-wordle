@@ -1,7 +1,8 @@
 package wordle
 
-import wordle.view.Printer
-import wordle.view.Scanner
+import wordle.io.FileReader
+import wordle.io.Printer
+import wordle.io.Scanner
 import java.time.LocalDate
 
 

@@ -1,5 +1,7 @@
 package wordle
 
+import wordle.io.FileReader
+
 // TODO: WordExtractor에서 FileReader 의존 끊기
 // TODO: 좀 더 명확한 '단어장' 같은 이름으로 변경하기
 /**
