@@ -4,6 +4,8 @@ import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
+import wordle.domain.Word
+import wordle.translation.WordBookExtractor
 
 /**
  * - 오늘의 단어 추출
@@ -11,13 +13,13 @@ import org.junit.jupiter.api.Test
  * - wordIndex
  *
  */
-class WordExtractorTest {
+class WordBookExtractorTest {
     @Test
     @DisplayName("배열의 크기를 구한다.")
     fun test01() {
         // arrange
         val fileName = "testWord.txt"
-        val extractor: WordExtractor = WordExtractor.create(fileName)
+        val extractor: WordBookExtractor = WordBookExtractor.create(fileName)
 
         // act
         val sut: Int = extractor.getSize()
@@ -32,7 +34,7 @@ class WordExtractorTest {
     fun test02() {
         // arrange
         val fileName = "testWord.txt"
-        val extractor: WordExtractor = WordExtractor.create(fileName)
+        val extractor: WordBookExtractor = WordBookExtractor.create(fileName)
         val index = 1;
 
         val expected: Word = Word("devlife")
@@ -49,7 +51,7 @@ class WordExtractorTest {
     fun test03() {
         // arrange
         val fileName = "testWord.txt"
-        val extractor: WordExtractor = WordExtractor.create(fileName)
+        val extractor: WordBookExtractor = WordBookExtractor.create(fileName)
         val index = 30;
 
         // act & assert
@@ -61,7 +63,7 @@ class WordExtractorTest {
     fun test04() {
         // arrange
         val fileName = "testWord.txt"
-        val extractor = WordExtractor.create(fileName)
+        val extractor = WordBookExtractor.create(fileName)
         val word = Word("devlife");
 
         // act
@@ -76,7 +78,7 @@ class WordExtractorTest {
     fun test05() {
         // arrange
         val fileName = "testWord.txt"
-        val extractor = WordExtractor.create(fileName)
+        val extractor = WordBookExtractor.create(fileName)
         val word = Word("notex");
 
         // act

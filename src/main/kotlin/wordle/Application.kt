@@ -1,12 +1,14 @@
 package wordle
 
+import wordle.service.GameMachine
+
 class Application {
 
     companion object {
 
         @JvmStatic
         fun main(args: Array<String>) {
-            GameMachine(6).start()
+            GameMachine().start(6)
         }
     }
 }

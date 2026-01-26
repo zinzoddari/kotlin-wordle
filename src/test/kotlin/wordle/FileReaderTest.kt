@@ -4,6 +4,7 @@ import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.assertj.core.api.SoftAssertions.assertSoftly
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
+import wordle.io.FileReader
 
 class FileReaderTest {
 

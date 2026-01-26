@@ -6,16 +6,17 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
+import wordle.domain.TodayWordIndex
 import java.time.LocalDate
 
-class WordIndexTest {
+class TodayWordIndexTest {
 
     @ParameterizedTest
     @MethodSource("expectedWords")
     @DisplayName("오늘의 단어 순번은 전달받은 날짜 빼기 2021년 6월 19일 나누기 배열의 크기이다")
     fun test01(date: LocalDate, arraySize: Int, expected: Long) {
         // arrange & act
-        val sut = WordIndex.create(date, arraySize)
+        val sut = TodayWordIndex.create(date, arraySize)
 
         // assert
         assertThat(sut.value).isEqualTo(expected)
@@ -29,7 +30,7 @@ class WordIndexTest {
         val arraySize = 20
 
         // act
-        val sut = WordIndex.create(date, arraySize)
+        val sut = TodayWordIndex.create(date, arraySize)
 
         // assert
         assertThat(sut.value).isEqualTo(0)

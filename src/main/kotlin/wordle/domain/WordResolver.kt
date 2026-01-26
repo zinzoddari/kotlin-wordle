@@ -1,20 +1,21 @@
-package wordle
+package wordle.domain
 
 
 // fun <K,V> MutableMap<K,V>.notContainsKey(key: K): Boolean = this.containsKey(key).not()
 
 class WordResolver(
-    private val word: Word,
-    private val counter: MutableMap<Char, Int> = init(word)
+    private val answer: Word
 ) {
-    fun check(input: Word): List<Result> {
-        val result = MutableList(word.value.length) { Result.ABSENT }
-        val answerArray = word.value.toCharArray()
+    private val counter: MutableMap<Char, Int> = init(answer)
+
+    fun check(input: Word): Results {
+        val result = MutableList(answer.value.length) { Result.ABSENT }
+        val answerArray = answer.value.toCharArray()
         val charArray = input.value.toCharArray()
 
         // 인덱스와 char가 같은지 판단
         for (it in charArray.indices) {
-            val checkValue = word.check(it, charArray[it])
+            val checkValue = answer.check(it, charArray[it])
 
             // result 같으면, word count 차감 및 결과 반환
             if (checkValue) {
@@ -44,7 +45,7 @@ class WordResolver(
             result[it] = Result.PRESENT
         }
 
-        return result
+        return Results(result)
     }
 
     companion object {

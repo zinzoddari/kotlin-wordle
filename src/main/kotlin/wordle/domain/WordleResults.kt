@@ -1,4 +1,6 @@
-package wordle
+package wordle.domain
+
+import wordle.translation.ResultsConverter
 
 class WordleResults(
     private val value: MutableList<Results> = mutableListOf()
@@ -10,7 +12,7 @@ class WordleResults(
     fun display(): String {
         val stringBuilder: StringBuilder = StringBuilder()
 
-        value.forEach { stringBuilder.append(it.convert()).append("\n") }
+        value.forEach { stringBuilder.append(ResultsConverter.convert(it)).append("\n") }
 
         return stringBuilder.toString().trim()
     }

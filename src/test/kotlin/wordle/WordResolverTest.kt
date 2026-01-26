@@ -5,6 +5,9 @@ import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
+import wordle.domain.Result
+import wordle.domain.Word
+import wordle.domain.WordResolver
 
 class WordResolverTest {
 

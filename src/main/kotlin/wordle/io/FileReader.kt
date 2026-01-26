@@ -1,4 +1,4 @@
-package wordle
+package wordle.io
 
 import java.io.File
 

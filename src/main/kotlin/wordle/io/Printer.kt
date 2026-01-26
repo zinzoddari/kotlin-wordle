@@ -1,6 +1,4 @@
-package wordle.view
-
-import wordle.Results
+package wordle.io
 
 object Printer {
 
