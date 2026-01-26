@@ -1,6 +1,7 @@
 package wordle
 
 import wordle.view.Printer
+import wordle.view.Scanner
 import java.time.LocalDate
 
 
@@ -10,7 +11,7 @@ class GameMachine(
 
     fun start() {
         // 오늘 단어를 단어장에서 추출
-        val fileReader = FileReader.read("words.txt")
+        val fileReader = FileReader.read(WORDS_FILE_NAME)
         val extractor: WordExtractor = WordExtractor(fileReader)
         val wordGenerator = WordGenerator(extractor)
         val todayWord: Word = wordGenerator.generateAnswer(LocalDate.now())
@@ -45,13 +46,14 @@ class GameMachine(
                 break
             }
 
-            // TODO: 마지막 판이면 viewTile 호출 X
             Printer.viewTile(wordleResults.display())
         }
 
         // 최종 결과 출력하기
-        // TODO: Printer를 이용해 결과 출력하기
         Printer.result(count, currentCount, wordleResults.display())
     }
 
+    companion object {
+        const val WORDS_FILE_NAME = "words.txt"
+    }
 }

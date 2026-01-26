@@ -17,14 +17,14 @@ class WordResolver(
             // result 같으면, word count 차감 및 결과 반환
             if (checkValue) {
                 result[it] = Result.CORRECT
-                answerArray[it] = '_'
+                answerArray[it] = BLANK_CHAR
                 counter[charArray[it]] = counter.getValue(charArray[it]) - 1
             }
         }
 
         // 다른 인덱스에도 해당 문자열이 있는지 판단
         for (it in charArray.indices) {
-            if (answerArray[it] == '_') {
+            if (answerArray[it] == BLANK_CHAR) {
                 continue
             }
 
@@ -46,6 +46,8 @@ class WordResolver(
     }
 
     companion object {
+        const val BLANK_CHAR: Char = '_'
+
         private fun init(word: Word): MutableMap<Char, Int> {
             return word.charCountMap()
         }

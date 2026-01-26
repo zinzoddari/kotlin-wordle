@@ -1,7 +1,5 @@
 package wordle.view
 
-import wordle.Results
-
 object Printer {
 
     fun introduce() {
