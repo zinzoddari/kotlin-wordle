@@ -22,20 +22,10 @@ class WordValidatorTest {
         assertThatThrownBy { validator.validate(word) }.isInstanceOf(IllegalArgumentException::class.java)
     }
 
-    @Test
-    @DisplayName("전달받은 문자열이 빈 문자열이면 오류가 발생한다")
-    fun test02() {
-        // arrange
-        val word = Word("")
-
-        // act & assert
-        assertThatThrownBy { validator.validate(word) }.isInstanceOf(IllegalArgumentException::class.java)
-    }
-
     @ParameterizedTest
     @ValueSource(strings = ["12345", "ㄱㄴㄷㄹㅁ", "☆☆☆☆☆"])
     @DisplayName("전달받은 문자열은 영어가 아니면 오류가 발생한다")
-    fun test03(input: String) {
+    fun test02(input: String) {
         // arrange
         val word = Word(input)
 
@@ -47,7 +37,7 @@ class WordValidatorTest {
 
     @Test
     @DisplayName("전달받은 문자열이 단어장에 없으면 에러를 발생한다")
-    fun test04() {
+    fun test03() {
         // arrange
         val word = Word("testt")
 

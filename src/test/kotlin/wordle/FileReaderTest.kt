@@ -4,12 +4,27 @@ import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.assertj.core.api.SoftAssertions.assertSoftly
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.EmptySource
+import org.junit.jupiter.params.provider.ValueSource
 
 class FileReaderTest {
 
+    @ParameterizedTest
+    @EmptySource
+    @ValueSource(strings = [" "])
+    @DisplayName("파일을 읽을 때, 파일 이름이 빈 값의 경우 오류가 발생합니다.")
+    fun test01(name: String) {
+        // act & assert
+        assertThatThrownBy { FileReader.read(name) }
+            .isInstanceOf(IllegalArgumentException::class.java)
+            .hasMessage("파일명을 입력해주세요.")
+    }
+
+
     @Test
     @DisplayName("읽어온 파일을 List<String> 형식으로 반환한다")
-    fun test01() {
+    fun test02() {
         // arrange
         val name = "testWord.txt"
 
@@ -25,11 +40,13 @@ class FileReaderTest {
 
     @Test
     @DisplayName("전달받은 파일 이름이 존재하지 않으면 에러가 발생한다")
-    fun test02() {
+    fun test03() {
         // arrange
         val name = "notExistFile.txt"
 
         // act & assert
-        assertThatThrownBy { FileReader.read(name) }.isInstanceOf(IllegalArgumentException::class.java)
+        assertThatThrownBy { FileReader.read(name) }
+            .isInstanceOf(IllegalArgumentException::class.java)
+            .hasMessage("파일이 존재하지 않습니다.")
     }
 }

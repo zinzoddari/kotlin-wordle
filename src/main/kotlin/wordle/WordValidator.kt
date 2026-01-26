@@ -4,8 +4,7 @@ class WordValidator(
     private val wordExtractor: WordExtractor
 ) {
     fun validate(word: Word) {
-        require(!word.value.isBlank()
-                && word.value.length == 5) { "입력값은 5글자여야 합니다." }
+        require(word.value.length == 5) { "입력값은 5글자여야 합니다." }
 
         require(REGEX.matches(word.value)) { "입력값은 영어여야 합니다." }
 
