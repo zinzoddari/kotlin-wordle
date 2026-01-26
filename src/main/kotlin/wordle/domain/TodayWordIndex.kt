@@ -2,9 +2,11 @@ package wordle.domain
 
 import java.time.LocalDate
 
-data class TodayWordIndex(
+@JvmInline
+value class TodayWordIndex (
     val value: Int
 ) {
+
     companion object {
         private const val MIN_INDEX: Int = 0
         private val BASE_DATE: LocalDate = LocalDate.of(2021, 6, 19)

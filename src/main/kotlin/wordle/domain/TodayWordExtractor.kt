@@ -1,6 +1,5 @@
 package wordle.domain
 
-import wordle.domain.TodayWordIndex
 import java.time.LocalDate
 
 /**
