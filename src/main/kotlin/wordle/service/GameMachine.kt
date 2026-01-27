@@ -1,9 +1,10 @@
-package wordle
+package wordle.service
 
 import wordle.domain.Results
+import wordle.domain.Round
+import wordle.domain.TodayWordExtractor
 import wordle.domain.Word
 import wordle.domain.WordBook
-import wordle.domain.TodayWordExtractor
 import wordle.domain.WordValidator
 import wordle.domain.Wordle
 import wordle.domain.WordleResults
@@ -12,37 +13,34 @@ import wordle.io.Scanner
 import wordle.translation.WordBookExtractor
 import java.time.LocalDate
 
-
+/**
+ * Wordle 게임을 관리합니다.
+ */
 class GameMachine(
     private val wordBook: WordBook = WordBookExtractor.extract(WORDS_FILE_NAME),
     private val todayWord: Word = TodayWordExtractor(wordBook).generateAnswer(LocalDate.now())
 ) {
-
     private val wordValidator: WordValidator = WordValidator(wordBook)
 
+    /**
+     * 게임을 시작합니다.
+     *
+     * @param 게임 진행 카운트 수
+     */
     fun start(count: Int) {
+        val round: Round = Round()
+        val wordleResults = WordleResults()
+
         // 소개 하기
         Printer.introduce()
 
-        // Wordle.round 호출하기
-        var currentCount: Int = 0
-        val wordleResults = WordleResults()
-        while (currentCount < count) {
-            currentCount++
+        while (!round.isGreaterThanRound(count)) {
+            round.next()
 
-            // TODO: Printer랑 Scanner를 합친 객체가 있으면 어떨지
-            // 입력 요청 메세지 (Scanner vs Printer)
-            Printer.requestInput()
-            // 게임머신에서 사용자 입력 받기
-            val input = Word(Scanner.input())
-            // 입력값 검증하기
-            try {
-                WordValidator(wordBook).validate(input)
-            } catch (e: Exception) {
-                continue
-            }
+            val wordle = Wordle(wordValidator, todayWord)
 
-            val results: Results = Wordle(wordValidator, todayWord).round(input)
+            val results: Results = wordle.round(requestWord())
+
             wordleResults.add(results)
 
             // 게임 머신이 게임 진행 여부 판단하기
@@ -54,7 +52,19 @@ class GameMachine(
         }
 
         // 최종 결과 출력하기
-        Printer.result(count, currentCount, wordleResults.display())
+        Printer.result(count, round.getValue(), wordleResults.display())
+    }
+
+    /**
+     * 단어 입력을 요청하고
+     * 입력 받은 값은 Word로 반환합니다.
+     *
+     * @return 입력 받은 문자를 이용해 Word 생성
+     */
+    private fun requestWord(): Word {
+        Printer.requestInput()
+
+        return Word(Scanner.input())
     }
 
     companion object {

@@ -66,4 +66,18 @@ class RoundTest {
             assertThat(sut).isFalse
         }
     }
+
+    @Test
+    @DisplayName("라운드의 값을 성공적으로 반환 받습니다.")
+    fun test04() {
+        // arrange
+        val input: Int = 4
+        val round: Round = Round(input)
+
+        // act
+        val sut: Int = round.getValue()
+
+        // assert
+        assertThat(sut).isEqualTo(input)
+    }
 }

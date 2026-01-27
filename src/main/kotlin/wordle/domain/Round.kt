@@ -5,7 +5,7 @@ package wordle.domain
  */
 @JvmInline
 value class Round(
-    val value: Int = 1
+    private val value: Int = 1
 ) {
     init {
         require(0 < value) { "라운드는 1보다 커야합니다." }
@@ -28,5 +28,12 @@ value class Round(
      */
     fun isGreaterThanRound(round: Int): Boolean {
         return this.value > round
+    }
+
+    /**
+     * 해당 라운드의 값을 반환합니다.
+     */
+    fun getValue(): Int {
+        return value
     }
 }

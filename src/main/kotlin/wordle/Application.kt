@@ -1,5 +1,7 @@
 package wordle
 
+import wordle.service.GameMachine
+
 class Application {
 
     companion object {
