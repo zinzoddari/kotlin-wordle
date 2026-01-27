@@ -1,5 +1,7 @@
 package wordle
 
+import wordle.domain.Result
+
 data class Results(
     val values: List<Result>
 ) {

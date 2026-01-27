@@ -1,5 +1,6 @@
 package wordle
 
+import wordle.domain.Result
 import wordle.domain.Word
 
 class WordResolver(
