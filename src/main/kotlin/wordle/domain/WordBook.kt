@@ -1,7 +1,5 @@
 package wordle.domain
 
-import wordle.Word
-
 /**
  * Word 리스트를 가진 단어장 객체입니다.
  */

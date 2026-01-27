@@ -1,5 +1,6 @@
 package wordle
 
+import wordle.domain.Word
 import wordle.domain.WordBook
 
 class WordValidator(

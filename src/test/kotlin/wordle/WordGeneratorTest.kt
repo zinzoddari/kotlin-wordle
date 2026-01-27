@@ -2,6 +2,7 @@ package wordle
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
+import wordle.domain.Word
 import wordle.translation.WordBookExtractor
 import java.time.LocalDate
 
@@ -17,7 +18,7 @@ class WordGeneratorTest {
         val expected = Word("zin")
 
         // act
-        val sut:Word = wordGenerator.generateAnswer(today)
+        val sut: Word = wordGenerator.generateAnswer(today)
 
         // assert
         assertThat(sut).isEqualTo(expected)

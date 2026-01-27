@@ -1,5 +1,7 @@
 package wordle
 
+import wordle.domain.Word
+
 class Wordle(
     private val resolver: WordResolver
 ) {

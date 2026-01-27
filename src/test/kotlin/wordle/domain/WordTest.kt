@@ -1,16 +1,15 @@
-package wordle
+package wordle.domain
 
-import org.assertj.core.api.Assertions.assertThat
-import org.assertj.core.api.Assertions.assertThatThrownBy
+import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
-import org.junit.jupiter.params.provider.EmptySource
-import org.junit.jupiter.params.provider.ValueSource
-import org.junit.jupiter.params.provider.MethodSource
-import org.junit.jupiter.params.provider.CsvSource
 import org.junit.jupiter.params.provider.Arguments
+import org.junit.jupiter.params.provider.CsvSource
+import org.junit.jupiter.params.provider.EmptySource
+import org.junit.jupiter.params.provider.MethodSource
+import org.junit.jupiter.params.provider.ValueSource
 
 class WordTest {
 
@@ -20,7 +19,7 @@ class WordTest {
     @DisplayName("단어를 생성할 때, 빈 값이면 오류가 발생합니다.")
     fun test00(input: String) {
         // act & assert
-        assertThatThrownBy { Word(input) }
+        Assertions.assertThatThrownBy { Word(input) }
             .isInstanceOf(IllegalArgumentException::class.java)
             .hasMessage("단어는 빈 값일 수 없습니다.")
     }
@@ -30,7 +29,7 @@ class WordTest {
     inner class test01 {
 
         @ParameterizedTest
-        @MethodSource("wordle.WordTest#expectedWords")
+        @MethodSource("wordle.domain.WordTest#expectedWords")
         @DisplayName("입력된 인덱스와 입력된 캐릭터가, Word와 동일한지 판단한다")
         fun test01(index: Int, char: Char, expected: Boolean) {
             // arrange
@@ -40,7 +39,7 @@ class WordTest {
             val sut: Boolean = input.check(index, char)
 
             // assert
-            assertThat(sut).isEqualTo(expected)
+            Assertions.assertThat(sut).isEqualTo(expected)
         }
 
         @ParameterizedTest
@@ -51,7 +50,7 @@ class WordTest {
             val input: Word = Word("APPLE")
 
             // act & assert
-            assertThatThrownBy { input.check(index, 'A') }
+            Assertions.assertThatThrownBy { input.check(index, 'A') }
                 .isInstanceOf(IllegalArgumentException::class.java)
                 .hasMessage("범위를 벗어났습니다.")
         }
@@ -68,7 +67,7 @@ class WordTest {
         val sut: Int = input.length()
 
         // assert
-        assertThat(sut).isEqualTo(expected)
+        Assertions.assertThat(sut).isEqualTo(expected)
     }
 
     @Test
@@ -82,7 +81,7 @@ class WordTest {
         val sut: CharArray = input.toCharArray()
 
         // assert
-        assertThat(sut).isEqualTo(expected)
+        Assertions.assertThat(sut).isEqualTo(expected)
     }
 
     @Test
@@ -102,7 +101,7 @@ class WordTest {
         val sut: MutableMap<Char, Int> = input.charCountMap()
 
         // assert
-        assertThat(sut).isEqualTo(expected)
+        Assertions.assertThat(sut).isEqualTo(expected)
     }
 
     companion object {

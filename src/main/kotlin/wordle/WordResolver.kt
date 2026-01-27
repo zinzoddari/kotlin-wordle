@@ -1,5 +1,7 @@
 package wordle
 
+import wordle.domain.Word
+
 class WordResolver(
     private val word: Word,
     private val counter: MutableMap<Char, Int> = init(word)

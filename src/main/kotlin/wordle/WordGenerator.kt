@@ -1,6 +1,7 @@
 package wordle
 
 import wordle.domain.TodayWordIndex
+import wordle.domain.Word
 import wordle.domain.WordBook
 import java.time.LocalDate
 

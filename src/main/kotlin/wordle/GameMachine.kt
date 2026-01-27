@@ -1,5 +1,6 @@
 package wordle
 
+import wordle.domain.Word
 import wordle.domain.WordBook
 import wordle.io.Printer
 import wordle.io.Scanner
