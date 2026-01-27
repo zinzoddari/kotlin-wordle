@@ -1,21 +1,27 @@
-package wordle
+package wordle.domain
 
-import wordle.domain.Result
-import wordle.domain.Word
-
+/**
+ * 입력 값이 정답과 일치하는지 판단합니다.
+ */
 class WordResolver(
-    private val word: Word,
-    private val counter: MutableMap<Char, Int> = init(word)
+    private val answer: Word
 ) {
+    private val counter: MutableMap<Char, Int> = init(answer)
 
-    fun check(input: Word): List<Result> {
-        val result = MutableList(word.length()) { Result.ABSENT }
-        val answerArray = word.toCharArray()
+    /**
+     * 입력된 [word]가 정답과 동일한지 판단합니다.
+     *
+     * @param input 입력한 단어
+     * @return 정답
+     */
+    fun check(input: Word): Results {
+        val result = MutableList(answer.length()) { Result.ABSENT }
+        val answerArray = answer.toCharArray()
         val charArray = input.toCharArray()
 
         // 인덱스와 char가 같은지 판단
         for (it in charArray.indices) {
-            val checkValue = word.check(it, charArray[it])
+            val checkValue = answer.check(it, charArray[it])
 
             // result 같으면, word count 차감 및 결과 반환
             if (checkValue) {
@@ -45,14 +51,20 @@ class WordResolver(
             result[it] = Result.PRESENT
         }
 
-        return result
+        return Results(result)
     }
 
     companion object {
         const val BLANK_CHAR: Char = '_'
 
-        private fun init(word: Word): MutableMap<Char, Int> {
-            return word.charCountMap()
+        /**
+         * 정답 단어의 char와 빈도수를 map으로 초기화합니다.
+         *
+         * @param answer 오늘의 단어 (정답)
+         * @return 오늘의 단어의 char, 빈도수의 map
+         */
+        private fun init(answer: Word): MutableMap<Char, Int> {
+            return answer.charCountMap()
         }
     }
 }

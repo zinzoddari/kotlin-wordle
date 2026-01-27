@@ -1,28 +1,28 @@
-package wordle
+package wordle.domain
 
-import org.assertj.core.api.Assertions.assertThat
+import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
-import wordle.domain.Result
-import wordle.domain.Word
 
 class WordResolverTest {
 
     @ParameterizedTest
     @MethodSource("expected")
-    @DisplayName("모든 단어가 맞을 때 정답을 판단합니다")
+    @DisplayName("모든 단어가 맞을 때 정답을 판단합니다.")
     fun test01(answer: String, input: String, expected: List<Result>) {
         // arrange
         val answerWord: Word = Word(answer)
         val inputWord: Word = Word(input)
 
+        val expectedResults: Results = Results(expected)
+
         // act
-        val sut: List<Result> = WordResolver(answerWord).check(inputWord)
+        val sut: Results = WordResolver(answerWord).check(inputWord)
 
         // assert
-        assertThat(sut).isEqualTo(expected)
+        Assertions.assertThat(sut).isEqualTo(expectedResults)
     }
 
     companion object {

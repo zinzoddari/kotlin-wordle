@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test
 import wordle.domain.Word
 import wordle.domain.Result
 import wordle.domain.Results
+import wordle.domain.WordResolver
 
 class WordleTest {
 
