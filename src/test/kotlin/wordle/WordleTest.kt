@@ -5,6 +5,7 @@ import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import wordle.domain.Word
 import wordle.domain.Result
+import wordle.domain.Results
 
 class WordleTest {
 
@@ -18,9 +19,11 @@ class WordleTest {
         val wordle = Wordle(resolver)
         val word = Word("testt")
 
-        val expected: Results = Results(listOf(
-            Result.ABSENT, Result.PRESENT, Result.ABSENT, Result.ABSENT, Result.ABSENT
-        ))
+        val expected: Results = Results(
+            listOf(
+                Result.ABSENT, Result.PRESENT, Result.ABSENT, Result.ABSENT, Result.ABSENT
+            )
+        )
 
         // act
         val sut: Results = wordle.round(word)

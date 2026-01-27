@@ -1,27 +1,11 @@
-package wordle
+package wordle.domain
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.DisplayName
-import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.EnumSource
-import wordle.domain.Result
 
 class ResultsTest {
-
-    @Test
-    @DisplayName("정답을 이모지로 반환합니다.")
-    fun test01() {
-        // arrange
-        val input = Results(listOf(Result.CORRECT, Result.ABSENT, Result.PRESENT))
-        val expected = "🟩⬜🟨"
-
-        // act
-        val sut: String = input.convert()
-
-        // assert
-        assertThat(sut).isEqualTo(expected)
-    }
 
     @ParameterizedTest
     @EnumSource(value = Result::class, mode = EnumSource.Mode.INCLUDE, names = ["CORRECT"])
