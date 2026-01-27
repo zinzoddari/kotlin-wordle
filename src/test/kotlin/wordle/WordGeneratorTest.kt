@@ -6,7 +6,7 @@ import java.time.LocalDate
 
 class WordGeneratorTest {
     val fileName: String = "testWord.txt"
-    val wordExtractor = WordExtractor.create(fileName)
+    val wordExtractor = WordExtractor.extract(fileName)
 
     @Test
     fun 오늘의_단어를_반환한다() {

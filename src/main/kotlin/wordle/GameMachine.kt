@@ -1,6 +1,6 @@
 package wordle
 
-import wordle.io.FileReader
+import wordle.domain.WordBook
 import wordle.io.Printer
 import wordle.io.Scanner
 import java.time.LocalDate
@@ -12,9 +12,8 @@ class GameMachine(
 
     fun start() {
         // 오늘 단어를 단어장에서 추출
-        val fileReader = FileReader.read(WORDS_FILE_NAME)
-        val extractor: WordExtractor = WordExtractor(fileReader)
-        val wordGenerator = WordGenerator(extractor)
+        val wordBook: WordBook = WordExtractor.extract(WORDS_FILE_NAME)
+        val wordGenerator = WordGenerator(wordBook)
         val todayWord: Word = wordGenerator.generateAnswer(LocalDate.now())
 
         // 소개 하기
@@ -33,7 +32,7 @@ class GameMachine(
             val input = Word(Scanner.input())
             // 입력값 검증하기
             try {
-                WordValidator(extractor).validate(input)
+                WordValidator(wordBook).validate(input)
             } catch (e: Exception) {
                 continue
             }

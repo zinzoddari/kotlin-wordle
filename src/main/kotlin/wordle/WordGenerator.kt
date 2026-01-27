@@ -1,8 +1,8 @@
 package wordle
 
 import wordle.domain.TodayWordIndex
+import wordle.domain.WordBook
 import java.time.LocalDate
-
 
 /**
  *  - 오늘의 단어는, `((현재 날짜 - 2021년 6월 19일) % 배열의 크기)` 번째의 단어이다.
@@ -12,16 +12,16 @@ import java.time.LocalDate
  *  - 오늘의 단어는 `words.txt`에 존재하는 단어여야한다.
  */
 class WordGenerator(
-    private val wordExtractor: WordExtractor
+    private val wordBook: WordBook
 ) {
     fun generateAnswer(today: LocalDate): Word {
         // 1. 배열의 크기를 구한다.
-        val arraySize: Int = wordExtractor.getSize()
+        val arraySize: Int = wordBook.getAllCount()
 
         // 2.오늘의 단어를 위한 index 추출한다.
         val todayWordIndex: TodayWordIndex = TodayWordIndex.fromDate(today, arraySize)
 
         // 3. 오늘의 단어를 반환한다.
-        return wordExtractor.get(todayWordIndex.value)
+        return wordBook.getWord(todayWordIndex.value)
     }
 }

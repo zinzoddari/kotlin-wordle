@@ -5,10 +5,11 @@ import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
+import wordle.domain.WordBook
 
 class WordValidatorTest {
 
-    private val extractor = WordExtractor(listOf("zin", "devlife"))
+    private val extractor: WordBook = WordBook.from(listOf("zin", "devlife"))
     private val validator = WordValidator(extractor)
 
     // TODO: 오류, 에러 용어 통일화 필요
