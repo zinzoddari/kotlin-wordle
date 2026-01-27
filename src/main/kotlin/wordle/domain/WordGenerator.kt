@@ -1,8 +1,5 @@
-package wordle
+package wordle.domain
 
-import wordle.domain.TodayWordIndex
-import wordle.domain.Word
-import wordle.domain.WordBook
 import java.time.LocalDate
 
 /**

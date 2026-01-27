@@ -2,6 +2,7 @@ package wordle
 
 import wordle.domain.Word
 import wordle.domain.WordBook
+import wordle.domain.WordGenerator
 import wordle.io.Printer
 import wordle.io.Scanner
 import wordle.translation.WordBookExtractor
