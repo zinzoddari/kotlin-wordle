@@ -25,7 +25,7 @@ class RoundTest {
     fun test02() {
         // arrange
         val round: Round = Round()
-        val expected: Round = Round(2)
+        val expected: Round = Round(1)
 
         // act
         val sut: Round = round.next()

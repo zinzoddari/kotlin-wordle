@@ -1,7 +1,7 @@
 package wordle.io
 
 import org.assertj.core.api.Assertions
-import org.assertj.core.api.SoftAssertions
+import org.assertj.core.api.SoftAssertions.assertSoftly
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
@@ -43,7 +43,7 @@ class FileReaderTest {
         val sut = FileReader.read(name)
 
         // assert
-        SoftAssertions.assertSoftly {
+        assertSoftly {
             it.assertThat(sut).size().isEqualTo(2)
             it.assertThat(sut).containsExactlyInAnyOrder("zin", "devlife")
         }

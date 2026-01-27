@@ -1,6 +1,6 @@
 package wordle.domain
 
-import org.assertj.core.api.Assertions
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.Arguments
@@ -22,7 +22,7 @@ class WordResolverTest {
         val sut: Results = WordResolver(answerWord).check(inputWord)
 
         // assert
-        Assertions.assertThat(sut).isEqualTo(expectedResults)
+        assertThat(sut).isEqualTo(expectedResults)
     }
 
     companion object {
