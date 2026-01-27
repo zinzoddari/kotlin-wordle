@@ -2,7 +2,7 @@ package wordle
 
 import wordle.domain.Word
 import wordle.domain.WordBook
-import wordle.domain.WordGenerator
+import wordle.domain.TodayWordExtractor
 import wordle.io.Printer
 import wordle.io.Scanner
 import wordle.translation.WordBookExtractor
@@ -16,8 +16,8 @@ class GameMachine(
     fun start() {
         // 오늘 단어를 단어장에서 추출
         val wordBook: WordBook = WordBookExtractor.extract(WORDS_FILE_NAME)
-        val wordGenerator = WordGenerator(wordBook)
-        val todayWord: Word = wordGenerator.generateAnswer(LocalDate.now())
+        val todayWordExtractor = TodayWordExtractor(wordBook)
+        val todayWord: Word = todayWordExtractor.generateAnswer(LocalDate.now())
 
         // 소개 하기
         Printer.introduce()

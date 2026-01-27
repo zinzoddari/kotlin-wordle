@@ -3,15 +3,17 @@ package wordle.domain
 import java.time.LocalDate
 
 /**
- *  - 오늘의 단어는, `((현재 날짜 - 2021년 6월 19일) % 배열의 크기)` 번째의 단어이다.
- *      - WordIndex 객체
- *          - 생성할 때 날짜, 배열의 크기
- *          - index 값을 가지고 있는
- *  - 오늘의 단어는 `words.txt`에 존재하는 단어여야한다.
+ * 오늘의 단어를 추출하는 객체
  */
-class WordGenerator(
+class TodayWordExtractor(
     private val wordBook: WordBook
 ) {
+    /**
+     * 특정 날짜에 해당하는 단어(정답)을 단어장에서 추출합니다.
+     *
+     * @param today 특정 대상 날짜
+     * @return 오늘의 단어 (정답)
+     */
     fun generateAnswer(today: LocalDate): Word {
         // 1. 배열의 크기를 구한다.
         val arraySize: Int = wordBook.getAllCount()
