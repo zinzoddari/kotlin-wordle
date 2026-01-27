@@ -1,23 +1,19 @@
-package wordle
+package wordle.domain
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
-import wordle.domain.Word
-import wordle.domain.Result
-import wordle.domain.Results
-import wordle.domain.WordResolver
 
 class WordleTest {
 
     val answer = Word("apple")
-    val resolver: WordResolver = WordResolver(answer)
+    val validator: WordValidator = WordValidator(WordBook(listOf(Word("testt"))))
 
     @Test
-    @DisplayName("전달받은 단어로 결과를 반환한다")
+    @DisplayName("전달받은 단어로 결과를 반환합니다.")
     fun test01() {
         // arrange
-        val wordle = Wordle(resolver)
+        val wordle = Wordle(validator, answer)
         val word = Word("testt")
 
         val expected: Results = Results(

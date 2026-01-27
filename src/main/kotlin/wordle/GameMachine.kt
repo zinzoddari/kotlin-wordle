@@ -4,8 +4,8 @@ import wordle.domain.Results
 import wordle.domain.Word
 import wordle.domain.WordBook
 import wordle.domain.TodayWordExtractor
-import wordle.domain.WordResolver
 import wordle.domain.WordValidator
+import wordle.domain.Wordle
 import wordle.domain.WordleResults
 import wordle.io.Printer
 import wordle.io.Scanner
@@ -14,15 +14,13 @@ import java.time.LocalDate
 
 
 class GameMachine(
-    private val count: Int
+    private val wordBook: WordBook = WordBookExtractor.extract(WORDS_FILE_NAME),
+    private val todayWord: Word = TodayWordExtractor(wordBook).generateAnswer(LocalDate.now())
 ) {
 
-    fun start() {
-        // 오늘 단어를 단어장에서 추출
-        val wordBook: WordBook = WordBookExtractor.extract(WORDS_FILE_NAME)
-        val todayWordExtractor = TodayWordExtractor(wordBook)
-        val todayWord: Word = todayWordExtractor.generateAnswer(LocalDate.now())
+    private val wordValidator: WordValidator = WordValidator(wordBook)
 
+    fun start(count: Int) {
         // 소개 하기
         Printer.introduce()
 
@@ -44,8 +42,7 @@ class GameMachine(
                 continue
             }
 
-            val resolver: WordResolver = WordResolver(todayWord)
-            val results: Results = Wordle(resolver).round(input)
+            val results: Results = Wordle(wordValidator, todayWord).round(input)
             wordleResults.add(results)
 
             // 게임 머신이 게임 진행 여부 판단하기
