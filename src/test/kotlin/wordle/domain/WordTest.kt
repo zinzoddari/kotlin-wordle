@@ -17,7 +17,7 @@ class WordTest {
     @ParameterizedTest
     @EmptySource
     @ValueSource(strings = [" "])
-    @DisplayName("단어를 생성할 때, 빈 값이면 오류가 발생합니다.")
+    @DisplayName("단어를 생성할 때, 빈 값이면 예외가 발생합니다.")
     fun test00(input: String) {
         // act & assert
         assertThatThrownBy { Word(input) }
@@ -45,7 +45,7 @@ class WordTest {
 
         @ParameterizedTest
         @ValueSource(ints = [5, 10])
-        @DisplayName("인덱스에서 벗어난 값이 들어오면 오류가 발생한다.")
+        @DisplayName("인덱스에서 벗어난 값이 들어오면 예외가 발생합니다.")
         fun test02(index: Int) {
             // arrange
             val input: Word = Word("APPLE")

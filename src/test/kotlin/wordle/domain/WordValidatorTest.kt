@@ -11,9 +11,8 @@ class WordValidatorTest {
     private val extractor: WordBook = WordBook.from(listOf("zin", "devlife"))
     private val validator = WordValidator(extractor)
 
-    // TODO: 오류, 에러 용어 통일화 필요
     @Test
-    @DisplayName("전달받은 문자열이 5글자가 아니면 오류가 발생한다")
+    @DisplayName("전달받은 문자열이 5글자가 아니면 예외가 발생합니다.")
     fun test01() {
         // arrange
         val word = Word("test")
@@ -24,7 +23,7 @@ class WordValidatorTest {
 
     @ParameterizedTest
     @ValueSource(strings = ["12345", "ㄱㄴㄷㄹㅁ", "☆☆☆☆☆"])
-    @DisplayName("전달받은 문자열은 영어가 아니면 오류가 발생한다")
+    @DisplayName("전달받은 문자열은 영어가 아니면 예외가 발생합니다.")
     fun test02(input: String) {
         // arrange
         val word = Word(input)
@@ -36,7 +35,7 @@ class WordValidatorTest {
     }
 
     @Test
-    @DisplayName("전달받은 문자열이 단어장에 없으면 에러를 발생한다")
+    @DisplayName("전달받은 문자열이 단어장에 없으면 예외가 발생합니다.")
     fun test03() {
         // arrange
         val word = Word("testt")
