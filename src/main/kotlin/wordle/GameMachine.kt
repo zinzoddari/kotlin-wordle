@@ -3,6 +3,7 @@ package wordle
 import wordle.domain.WordBook
 import wordle.io.Printer
 import wordle.io.Scanner
+import wordle.translation.WordBookExtractor
 import java.time.LocalDate
 
 
@@ -12,7 +13,7 @@ class GameMachine(
 
     fun start() {
         // 오늘 단어를 단어장에서 추출
-        val wordBook: WordBook = WordExtractor.extract(WORDS_FILE_NAME)
+        val wordBook: WordBook = WordBookExtractor.extract(WORDS_FILE_NAME)
         val wordGenerator = WordGenerator(wordBook)
         val todayWord: Word = wordGenerator.generateAnswer(LocalDate.now())
 

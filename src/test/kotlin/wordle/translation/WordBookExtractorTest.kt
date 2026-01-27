@@ -1,11 +1,11 @@
-package wordle
+package wordle.translation
 
-import org.assertj.core.api.Assertions.assertThat
+import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import wordle.domain.WordBook
 
-class WordExtractorTest {
+class WordBookExtractorTest {
 
     @Test
     @DisplayName("파일을 읽어 단어장으로 반환합니다.")
@@ -14,9 +14,9 @@ class WordExtractorTest {
         val fileName: String = "testWord.txt"
 
         // act
-        val sut: WordBook = WordExtractor.extract(fileName)
+        val sut: WordBook = WordBookExtractor.extract(fileName)
 
         // assert
-        assertThat(sut).isNotNull
+        Assertions.assertThat(sut).isNotNull
     }
 }

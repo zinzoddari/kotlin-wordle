@@ -2,11 +2,12 @@ package wordle
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
+import wordle.translation.WordBookExtractor
 import java.time.LocalDate
 
 class WordGeneratorTest {
     val fileName: String = "testWord.txt"
-    val wordExtractor = WordExtractor.extract(fileName)
+    val wordExtractor = WordBookExtractor.extract(fileName)
 
     @Test
     fun 오늘의_단어를_반환한다() {
