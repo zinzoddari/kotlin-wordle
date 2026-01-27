@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test
 class RoundTest {
 
     @Test
-    @DisplayName("라운드는 1보다 작으면 예외가 발생합니다.")
+    @DisplayName("라운드는 0보다 작으면 예외가 발생합니다.")
     fun test01() {
         // arrange
         val input: Int = -1
@@ -17,7 +17,7 @@ class RoundTest {
         // act & assert
         assertThatThrownBy { Round(input) }
             .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessage("라운드는 1보다 커야합니다.")
+            .hasMessage("라운드는 양수여야 합니다.")
     }
 
     @Test

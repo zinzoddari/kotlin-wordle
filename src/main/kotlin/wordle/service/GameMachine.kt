@@ -25,21 +25,26 @@ class GameMachine(
     /**
      * 게임을 시작합니다.
      *
-     * @param 게임 진행 카운트 수
+     * @param count 게임 진행 카운트 수
      */
     fun start(count: Int) {
-        val round: Round = Round()
+        var round: Round = Round()
         val wordleResults = WordleResults()
 
         // 소개 하기
         Printer.introduce()
 
         while (!round.isGreaterThanRound(count)) {
-            round.next()
+            round = round.next()
 
             val wordle = Wordle(wordValidator, todayWord)
 
-            val results: Results = wordle.round(requestWord())
+            val results: Results
+            try {
+                results = wordle.round(requestWord())
+            } catch (e: Exception) {
+                continue
+            }
 
             wordleResults.add(results)
 
