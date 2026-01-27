@@ -1,15 +1,16 @@
 package wordle.domain
 
-import org.assertj.core.api.Assertions
+import org.assertj.core.api.Assertions.assertThat
+import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
-import org.junit.jupiter.params.provider.Arguments
-import org.junit.jupiter.params.provider.CsvSource
 import org.junit.jupiter.params.provider.EmptySource
-import org.junit.jupiter.params.provider.MethodSource
 import org.junit.jupiter.params.provider.ValueSource
+import org.junit.jupiter.params.provider.MethodSource
+import org.junit.jupiter.params.provider.CsvSource
+import org.junit.jupiter.params.provider.Arguments
 
 class WordTest {
 
@@ -19,7 +20,7 @@ class WordTest {
     @DisplayName("단어를 생성할 때, 빈 값이면 오류가 발생합니다.")
     fun test00(input: String) {
         // act & assert
-        Assertions.assertThatThrownBy { Word(input) }
+        assertThatThrownBy { Word(input) }
             .isInstanceOf(IllegalArgumentException::class.java)
             .hasMessage("단어는 빈 값일 수 없습니다.")
     }
@@ -39,7 +40,7 @@ class WordTest {
             val sut: Boolean = input.check(index, char)
 
             // assert
-            Assertions.assertThat(sut).isEqualTo(expected)
+            assertThat(sut).isEqualTo(expected)
         }
 
         @ParameterizedTest
@@ -50,7 +51,7 @@ class WordTest {
             val input: Word = Word("APPLE")
 
             // act & assert
-            Assertions.assertThatThrownBy { input.check(index, 'A') }
+            assertThatThrownBy { input.check(index, 'A') }
                 .isInstanceOf(IllegalArgumentException::class.java)
                 .hasMessage("범위를 벗어났습니다.")
         }
@@ -67,7 +68,7 @@ class WordTest {
         val sut: Int = input.length()
 
         // assert
-        Assertions.assertThat(sut).isEqualTo(expected)
+        assertThat(sut).isEqualTo(expected)
     }
 
     @Test
@@ -81,7 +82,7 @@ class WordTest {
         val sut: CharArray = input.toCharArray()
 
         // assert
-        Assertions.assertThat(sut).isEqualTo(expected)
+        assertThat(sut).isEqualTo(expected)
     }
 
     @Test
@@ -101,7 +102,21 @@ class WordTest {
         val sut: MutableMap<Char, Int> = input.charCountMap()
 
         // assert
-        Assertions.assertThat(sut).isEqualTo(expected)
+        assertThat(sut).isEqualTo(expected)
+    }
+
+    @Test
+    @DisplayName("단어의 문자열을 반환합니다.")
+    fun test05() {
+        // arrange
+        val input: String = "AAAAA"
+        val word: Word = Word(input)
+
+        // act
+        val sut: String = word.getValue()
+
+        // assert
+        assertThat(sut).isEqualTo(input)
     }
 
     companion object {

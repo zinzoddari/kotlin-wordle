@@ -4,6 +4,7 @@ import wordle.domain.Results
 import wordle.domain.Word
 import wordle.domain.WordBook
 import wordle.domain.TodayWordExtractor
+import wordle.domain.WordValidator
 import wordle.io.Printer
 import wordle.io.Scanner
 import wordle.translation.WordBookExtractor

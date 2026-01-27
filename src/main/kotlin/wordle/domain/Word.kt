@@ -5,7 +5,7 @@ package wordle.domain
  */
 @JvmInline
 value class Word(
-    val value: String
+    private val value: String
 ) {
     init {
         require(value.trim().isNotBlank()) { "단어는 빈 값일 수 없습니다." }
@@ -53,5 +53,14 @@ value class Word(
         return value.groupBy { it }
             .mapValues { (_, v) -> v.size }
             .toMutableMap()
+    }
+
+    /**
+     * 단어의 문자열을 반환합니다.
+     *
+     * @return 단어의 문자열
+     */
+    fun getValue(): String {
+        return value
     }
 }
