@@ -1,7 +1,7 @@
 package wordle.domain
 
 /**
- * 단어를 의마하는 값 객체
+ * 단어를 의미하는 값 객체
  */
 @JvmInline
 value class Word(
