@@ -14,7 +14,7 @@ class WordleTest {
     fun test01() {
         // arrange
         val wordle = Wordle(validator, answer)
-        val word = Word("testt")
+        val word = "testt"
 
         val expected: Results = Results(
             listOf(

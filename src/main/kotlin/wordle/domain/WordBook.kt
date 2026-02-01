@@ -40,8 +40,8 @@ value class WordBook(
      * @param word 단어장에 존재하는지 확인하고 싶은 단어
      * @return 입력된 [word]가 단어장에 존재하는지 여부
      */
-    fun exists(word: Word): Boolean {
-        return values.contains(word)
+    fun exists(word: String): Boolean {
+        return values.contains(Word(word))
     }
 
     companion object {

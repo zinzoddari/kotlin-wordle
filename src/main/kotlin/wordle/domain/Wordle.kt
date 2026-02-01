@@ -10,12 +10,12 @@ class Wordle(
     /**
      * 입력된 단어의 유효성과 정답을 판단합니다.
      *
-     * @param word 입력된 단어
+     * @param input 입력된 단어
      * @return 정답
      */
-    fun round(word: Word): Results {
-        validator.validate(word)
+    fun round(input: String): Results {
+        validator.validate(input)
 
-        return WordResolver(todayWord).check(word)
+        return WordResolver(todayWord).check(Word(input))
     }
 }

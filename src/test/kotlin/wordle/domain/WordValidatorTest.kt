@@ -15,7 +15,7 @@ class WordValidatorTest {
     @DisplayName("전달받은 문자열이 5글자가 아니면 예외가 발생합니다.")
     fun test01() {
         // arrange
-        val word = Word("test")
+        val word = "test"
 
         // act & assert
         assertThatThrownBy { validator.validate(word) }.isInstanceOf(IllegalArgumentException::class.java)
@@ -26,7 +26,7 @@ class WordValidatorTest {
     @DisplayName("전달받은 문자열은 영어가 아니면 예외가 발생합니다.")
     fun test02(input: String) {
         // arrange
-        val word = Word(input)
+        val word = input
 
         // act & assert
         assertThatThrownBy { validator.validate(word) }
@@ -38,7 +38,7 @@ class WordValidatorTest {
     @DisplayName("전달받은 문자열이 단어장에 없으면 예외가 발생합니다.")
     fun test03() {
         // arrange
-        val word = Word("testt")
+        val word = "testt"
 
         // act & assert
         assertThatThrownBy { validator.validate(word) }

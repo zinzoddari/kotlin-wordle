@@ -57,10 +57,12 @@ class WordBookTest {
         @DisplayName("인덱스에 맞는 단어를 가져옵니다.")
         fun test03() {
             // arrange
-            val wordBook: WordBook = WordBook.from(listOf("AAA"))
+            val input: String = "AAA"
+
+            val wordBook: WordBook = WordBook.from(listOf(input))
             val index: Int = 0;
 
-            val expected: Word = Word("AAA")
+            val expected: Word = Word(input)
 
             // act
             val sut: Word = wordBook.getWord(index)
@@ -78,9 +80,8 @@ class WordBookTest {
         @DisplayName("존재하는 단어일 경우 true를 반환합니다.")
         fun test01() {
             // arrange
-            val word: String = "AAA"
-            val wordBook: WordBook = WordBook.from(listOf(word))
-            val input = Word(word)
+            val input: String = "AAA"
+            val wordBook: WordBook = WordBook.from(listOf(input))
 
             // act
             val sut: Boolean = wordBook.exists(input)
@@ -94,7 +95,7 @@ class WordBookTest {
         fun test02() {
             // arrange
             val wordBook: WordBook = WordBook.from(listOf("AAA"))
-            val input = Word("BBB")
+            val input = "BBB"
 
             // act
             val sut: Boolean = wordBook.exists(input)

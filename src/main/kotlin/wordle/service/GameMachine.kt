@@ -41,7 +41,7 @@ class GameMachine(
 
             val results: Results
             try {
-                results = wordle.round(requestWord())
+                results = wordle.round(requestInput())
             } catch (e: Exception) {
                 continue
             }
@@ -66,10 +66,10 @@ class GameMachine(
      *
      * @return 입력 받은 문자를 이용해 Word 생성
      */
-    private fun requestWord(): Word {
+    private fun requestInput(): String {
         Printer.requestInput()
 
-        return Word(Scanner.input())
+        return Scanner.input()
     }
 
     companion object {
