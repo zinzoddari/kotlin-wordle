@@ -21,7 +21,7 @@ object ResultsConverter {
             builder.append(when (result) {
                 Result.ABSENT -> "⬜"
                 Result.PRESENT -> "🟨"
-                else -> "🟩"
+                Result.CORRECT -> "🟩"
             })
         }
 
