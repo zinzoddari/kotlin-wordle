@@ -35,6 +35,13 @@ value class WordBook(
     }
 
     /**
+     * 특정 index의 단어의 문자열을 가져옵니다.
+     */
+    fun getWordString(index: Int): String {
+        return getWord(index).toString()
+    }
+
+    /**
      * [word]가 단어장에 존재하는지 여부를 반환합니다.
      *
      * @param word 단어장에 존재하는지 확인하고 싶은 단어
