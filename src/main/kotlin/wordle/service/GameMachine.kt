@@ -43,6 +43,7 @@ class GameMachine(
             try {
                 results = wordle.round(requestInput())
             } catch (e: Exception) {
+                Printer.error(e.message ?: "오류가 발생하였습니다.")
                 continue
             }
 

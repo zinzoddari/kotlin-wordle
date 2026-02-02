@@ -37,4 +37,11 @@ object Printer {
         println("${currentCount}/${count}")
         viewTile(tile)
     }
+
+    /**
+     * 에러 메세지를 출력합니다.
+     */
+    fun error(message: String) {
+        println(message)
+    }
 }
