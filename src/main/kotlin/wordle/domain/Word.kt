@@ -7,10 +7,6 @@ package wordle.domain
 value class Word(
     private val value: String
 ) {
-    init {
-        require(value.trim().isNotBlank()) { "단어는 빈 값일 수 없습니다." }
-    }
-
     /**
      * 입력 된 index의 char가 입력된 char와 같은지 확인합니다.
      *

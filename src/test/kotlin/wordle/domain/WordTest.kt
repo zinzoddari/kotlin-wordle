@@ -14,17 +14,6 @@ import org.junit.jupiter.params.provider.Arguments
 
 class WordTest {
 
-    @ParameterizedTest
-    @EmptySource
-    @ValueSource(strings = [" "])
-    @DisplayName("단어를 생성할 때, 빈 값이면 예외가 발생합니다.")
-    fun test00(input: String) {
-        // act & assert
-        assertThatThrownBy { Word(input) }
-            .isInstanceOf(IllegalArgumentException::class.java)
-            .hasMessage("단어는 빈 값일 수 없습니다.")
-    }
-
     @Nested
     @DisplayName("특정 인덱스의 문자열이 같은지 판단할 때,")
     inner class test01 {
