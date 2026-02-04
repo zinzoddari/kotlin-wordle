@@ -6,10 +6,10 @@ import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
 
-class WordValidatorTest {
+class WordleWordValidatorTest {
 
-    private val extractor: WordBook = WordBook.from(listOf("zin", "devlife"))
-    private val validator = WordValidator(extractor)
+    private val extractor: WordBook = WordBook.from(AnswerWordValidator(), listOf("zinzo", "devli"))
+    private val validator = WordleWordValidator(extractor)
 
     @Test
     @DisplayName("전달받은 문자열이 5글자가 아니면 예외가 발생합니다.")
