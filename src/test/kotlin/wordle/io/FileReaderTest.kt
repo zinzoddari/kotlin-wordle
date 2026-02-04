@@ -45,7 +45,7 @@ class FileReaderTest {
         // assert
         assertSoftly {
             it.assertThat(sut).size().isEqualTo(2)
-            it.assertThat(sut).containsExactlyInAnyOrder("zin", "devlife")
+            it.assertThat(sut).containsExactlyInAnyOrder("zinzo", "devli")
         }
     }
 }
