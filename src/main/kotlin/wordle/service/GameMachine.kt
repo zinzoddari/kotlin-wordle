@@ -5,7 +5,7 @@ import wordle.domain.Round
 import wordle.domain.TodayWordExtractor
 import wordle.domain.Word
 import wordle.domain.WordBook
-import wordle.domain.WordValidator
+import wordle.domain.WordleWordValidator
 import wordle.domain.Wordle
 import wordle.domain.WordleResults
 import wordle.io.Printer
@@ -20,7 +20,7 @@ class GameMachine(
     private val wordBook: WordBook = WordBookExtractor.extract(WORDS_FILE_NAME),
     private val todayWord: Word = TodayWordExtractor(wordBook).generateAnswer(LocalDate.now())
 ) {
-    private val wordValidator: WordValidator = WordValidator(wordBook)
+    private val wordleWordValidator: WordleWordValidator = WordleWordValidator(wordBook)
 
     /**
      * 게임을 시작합니다.
@@ -37,7 +37,7 @@ class GameMachine(
         while (!round.isGreaterThanRound(count)) {
             round = round.next()
 
-            val wordle = Wordle(wordValidator, todayWord)
+            val wordle = Wordle(wordleWordValidator, todayWord)
 
             val results: Results
             try {

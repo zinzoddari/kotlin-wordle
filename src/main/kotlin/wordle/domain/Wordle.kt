@@ -4,7 +4,7 @@ package wordle.domain
  * Wordle 게임 한 판을 의미합니다.
  */
 class Wordle(
-    private val validator: WordValidator,
+    private val validator: WordleWordValidator,
     private val todayWord: Word
 ) {
     /**
@@ -14,8 +14,8 @@ class Wordle(
      * @return 정답
      */
     fun round(input: String): Results {
-        validator.validate(input)
+        val word: Word = WordFactory.create(validator, input)
 
-        return WordResolver(todayWord).check(Word(input))
+        return WordResolver(todayWord).check(word)
     }
 }
