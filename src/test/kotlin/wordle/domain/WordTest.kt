@@ -94,19 +94,19 @@ class WordTest {
         assertThat(sut).isEqualTo(expected)
     }
 
-    @Test
-    @DisplayName("단어의 문자열을 반환합니다.")
-    fun test05() {
-        // arrange
-        val input: String = "AAAAA"
-        val word: Word = Word(input)
-
-        // act
-        val sut: String = word.getValue()
-
-        // assert
-        assertThat(sut).isEqualTo(input)
-    }
+//    @Test
+//    @DisplayName("단어의 문자열을 반환합니다.")
+//    fun test05() {
+//        // arrange
+//        val input: String = "AAAAA"
+//        val word: Word = Word(input)
+//
+//        // act
+//        val sut: String = word.getValue()
+//
+//        // assert
+//        assertThat(sut).isEqualTo(input)
+//    }
 
     companion object {
         @JvmStatic

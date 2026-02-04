@@ -59,6 +59,7 @@ class GameMachine(
 
         // 최종 결과 출력하기
         Printer.result(count, round.getValue(), wordleResults.display())
+        // TODO: round.getValue() 보다는 round의 toString을 활용하기
     }
 
     /**
@@ -77,3 +78,7 @@ class GameMachine(
         const val WORDS_FILE_NAME = "words.txt"
     }
 }
+
+// 여기서 (도메인 분리) 생각을 하니까 잘 몰랐는데
+// 여기에서 외부 협업 부분을 덜어내기...
+

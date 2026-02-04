@@ -1,5 +1,8 @@
 package wordle.domain
 
+// archunit
+// word 생성은 factory를 통해서만 처리 되도록 . . . (학습하기)
+
 /**
  * 단어를 의미하는 값 객체
  */
@@ -49,14 +52,5 @@ value class Word(
         return value.groupBy { it }
             .mapValues { (_, v) -> v.size }
             .toMutableMap()
-    }
-
-    /**
-     * 단어의 문자열을 반환합니다.
-     *
-     * @return 단어의 문자열
-     */
-    fun getValue(): String {
-        return value
     }
 }
