@@ -8,6 +8,7 @@ import wordle.domain.WordBook
 import wordle.domain.WordleWordValidator
 import wordle.domain.Wordle
 import wordle.domain.WordleResults
+import wordle.io.ConsolePrinter
 import wordle.io.Printer
 import wordle.io.Scanner
 import wordle.translation.WordBookExtractor
@@ -18,7 +19,8 @@ import java.time.LocalDate
  */
 class GameMachine(
     private val wordBook: WordBook = WordBookExtractor.extract(WORDS_FILE_NAME),
-    private val todayWord: Word = TodayWordExtractor(wordBook).generateAnswer(LocalDate.now())
+    private val todayWord: Word = TodayWordExtractor(wordBook).generateAnswer(LocalDate.now()),
+    private val printer: Printer = ConsolePrinter()
 ) {
     private val wordleWordValidator: WordleWordValidator = WordleWordValidator(wordBook)
 
@@ -32,7 +34,7 @@ class GameMachine(
         val wordleResults = WordleResults()
 
         // 소개 하기
-        Printer.introduce()
+        printer.introduce()
 
         while (!round.isGreaterThanRound(count)) {
             round = round.next()
@@ -43,7 +45,7 @@ class GameMachine(
             try {
                 results = wordle.round(requestInput())
             } catch (e: Exception) {
-                Printer.error(e.message ?: "오류가 발생하였습니다.")
+                printer.error(e.message ?: "오류가 발생하였습니다.")
                 continue
             }
 
@@ -54,11 +56,11 @@ class GameMachine(
                 break
             }
 
-            Printer.viewTile(wordleResults.display())
+            printer.viewTile(wordleResults.display())
         }
 
         // 최종 결과 출력하기
-        Printer.result(count, round.getValue(), wordleResults.display())
+        printer.result(count, round.getValue(), wordleResults.display())
     }
 
     /**
@@ -68,7 +70,7 @@ class GameMachine(
      * @return 입력 받은 문자를 이용해 Word 생성
      */
     private fun requestInput(): String {
-        Printer.requestInput()
+        printer.requestInput()
 
         return Scanner.input()
     }
