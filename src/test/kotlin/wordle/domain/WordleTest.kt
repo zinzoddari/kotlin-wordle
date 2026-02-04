@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test
 class WordleTest {
 
     val answer = Word("apple")
-    val validator: WordValidator = WordValidator(WordBook(listOf(Word("testt"))))
+    val validator: WordleWordValidator = WordleWordValidator(WordBook(listOf(Word("testt"))))
 
     @Test
     @DisplayName("전달받은 단어로 결과를 반환합니다.")

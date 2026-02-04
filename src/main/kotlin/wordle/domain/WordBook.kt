@@ -35,13 +35,6 @@ value class WordBook(
     }
 
     /**
-     * 특정 index의 단어의 문자열을 가져옵니다.
-     */
-    fun getWordString(index: Int): String {
-        return getWord(index).toString()
-    }
-
-    /**
      * [word]가 단어장에 존재하는지 여부를 반환합니다.
      *
      * @param word 단어장에 존재하는지 확인하고 싶은 단어
@@ -58,8 +51,8 @@ value class WordBook(
          * @param words 단어장으로 만들고자하는 단어 리스트
          * @return 입력된 리스트로 생성된 단어장
          */
-        fun from(words: List<String>): WordBook {
-            return WordBook(words.map { Word(it)})
+        fun from(validator: WordValidator, words: List<String>): WordBook {
+            return WordBook(words.map { WordFactory.create(validator, it) })
         }
     }
 }

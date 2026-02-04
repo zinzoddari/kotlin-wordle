@@ -8,11 +8,13 @@ import org.junit.jupiter.api.Test
 
 class WordBookTest {
 
+    private val validator = AnswerWordValidator(3)
+
     @Test
     @DisplayName("단어장의 크기를 구합니다.")
     fun test01() {
         // arrange
-        val wordBook: WordBook = WordBook.from(listOf("AAA", "BBB"))
+        val wordBook: WordBook = WordBook.from(validator, listOf("AAA", "BBB"))
 
         // act
         val sut: Int = wordBook.getAllCount()
@@ -29,7 +31,7 @@ class WordBookTest {
         @DisplayName("인덱스 값이 0보다 작으면, 예외가 발생합니다.")
         fun test01() {
             // arrange
-            val wordBook: WordBook = WordBook.from(listOf("AAA", "BBB"))
+            val wordBook: WordBook = WordBook.from(validator, listOf("AAA", "BBB"))
 
             val index: Int = -1
 
@@ -43,7 +45,7 @@ class WordBookTest {
         @DisplayName("인덱스 값이 전체 단어장 갯수를 넘기면, 예외가 발생합니다.")
         fun test02() {
             // arrange
-            val wordBook: WordBook = WordBook.from(listOf("AAA"))
+            val wordBook: WordBook = WordBook.from(validator, listOf("AAA"))
 
             val index: Int = 30
 
@@ -59,7 +61,7 @@ class WordBookTest {
             // arrange
             val input: String = "AAA"
 
-            val wordBook: WordBook = WordBook.from(listOf(input))
+            val wordBook: WordBook = WordBook.from(validator, listOf(input))
             val index: Int = 0;
 
             val expected: Word = Word(input)
@@ -81,7 +83,7 @@ class WordBookTest {
         fun test01() {
             // arrange
             val input: String = "AAA"
-            val wordBook: WordBook = WordBook.from(listOf(input))
+            val wordBook: WordBook = WordBook.from(validator, listOf(input))
 
             // act
             val sut: Boolean = wordBook.exists(input)
@@ -94,7 +96,7 @@ class WordBookTest {
         @DisplayName("존재하지 않는 단어인 경우 false를 반환합니다.")
         fun test02() {
             // arrange
-            val wordBook: WordBook = WordBook.from(listOf("AAA"))
+            val wordBook: WordBook = WordBook.from(validator, listOf("AAA"))
             val input = "BBB"
 
             // act

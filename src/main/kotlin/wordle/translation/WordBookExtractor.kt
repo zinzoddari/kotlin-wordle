@@ -1,6 +1,8 @@
 package wordle.translation
 
+import wordle.domain.AnswerWordValidator
 import wordle.domain.WordBook
+import wordle.domain.WordValidator
 import wordle.io.FileReader
 
 /**
@@ -16,6 +18,6 @@ object WordBookExtractor {
      * @return [WordBook] 단어장
      */
     fun extract(fileName: String): WordBook {
-        return WordBook.from(FileReader.read(fileName))
+        return WordBook.from(AnswerWordValidator(), FileReader.read(fileName))
     }
 }

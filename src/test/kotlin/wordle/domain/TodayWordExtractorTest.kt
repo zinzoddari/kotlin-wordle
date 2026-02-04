@@ -16,7 +16,7 @@ class TodayWordExtractorTest {
         // arrange
         val todayWordExtractor = TodayWordExtractor(wordExtractor)
         val today: LocalDate = LocalDate.of(2021, 6, 19)
-        val expected = Word("zin")
+        val expected = Word("zinzo")
 
         // act
         val sut: Word = todayWordExtractor.generateAnswer(today)

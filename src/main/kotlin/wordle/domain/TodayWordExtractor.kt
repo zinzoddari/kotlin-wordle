@@ -22,11 +22,6 @@ class TodayWordExtractor(
         val todayWordIndex: TodayWordIndex = TodayWordIndex.fromDate(today, arraySize)
 
         // 3. 오늘의 단어를 추출한다.
-        val answer: String = wordBook.getWordString(todayWordIndex.value)
-
-        // 4. 오늘의 단어를 검증한다.
-        WordValidator(wordBook).validate(answer)
-
-        return Word(answer)
+        return wordBook.getWord(todayWordIndex.value)
     }
 }
