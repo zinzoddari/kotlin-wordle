@@ -10,6 +10,7 @@ import wordle.domain.Wordle
 import wordle.domain.WordleResults
 import wordle.io.ConsolePrinter
 import wordle.io.Printer
+import wordle.io.ConsoleScanner
 import wordle.io.Scanner
 import wordle.translation.WordBookExtractor
 import java.time.LocalDate
@@ -20,7 +21,8 @@ import java.time.LocalDate
 class GameMachine(
     private val wordBook: WordBook = WordBookExtractor.extract(WORDS_FILE_NAME),
     private val todayWord: Word = TodayWordExtractor(wordBook).generateAnswer(LocalDate.now()),
-    private val printer: Printer = ConsolePrinter()
+    private val printer: Printer = ConsolePrinter(),
+    private val scanner: Scanner = ConsoleScanner()
 ) {
     private val wordleWordValidator: WordleWordValidator = WordleWordValidator(wordBook)
 
@@ -72,7 +74,7 @@ class GameMachine(
     private fun requestInput(): String {
         printer.requestInput()
 
-        return Scanner.input()
+        return scanner.input()
     }
 
     companion object {
