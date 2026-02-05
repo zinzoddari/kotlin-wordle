@@ -17,7 +17,7 @@ object ResultsConverter {
     fun convert(results: Results): String {
         val builder = StringBuilder()
 
-        for (result in results.getValues()) {
+        for (result in results) {
             builder.append(when (result) {
                 Result.ABSENT -> "⬜"
                 Result.PRESENT -> "🟨"

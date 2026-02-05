@@ -6,7 +6,7 @@ package wordle.domain
 @JvmInline
 value class Results(
     val values: List<Result>
-) {
+) : Iterable<Result> {
     /**
      * 정답 여부를 확인합니다.
      *
@@ -16,12 +16,7 @@ value class Results(
         return values.all { it == Result.CORRECT }
     }
 
-    /**
-     * 값을 가져옵니다.
-     *
-     * @return 결과 목록
-     */
-    fun getValues(): List<Result> {
-        return values
+    override fun iterator(): Iterator<Result> {
+        return values.iterator()
     }
 }
