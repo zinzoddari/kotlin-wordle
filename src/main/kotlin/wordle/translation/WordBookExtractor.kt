@@ -2,7 +2,6 @@ package wordle.translation
 
 import wordle.domain.AnswerWordValidator
 import wordle.domain.WordBook
-import wordle.domain.WordValidator
 import wordle.io.FileReader
 
 /**
