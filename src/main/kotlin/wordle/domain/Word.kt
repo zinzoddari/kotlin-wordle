@@ -50,13 +50,4 @@ value class Word(
             .mapValues { (_, v) -> v.size }
             .toMutableMap()
     }
-
-    /**
-     * 단어의 문자열을 반환합니다.
-     *
-     * @return 단어의 문자열
-     */
-    fun getValue(): String {
-        return value
-    }
 }
