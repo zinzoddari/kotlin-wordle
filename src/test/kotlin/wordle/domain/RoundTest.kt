@@ -74,10 +74,12 @@ class RoundTest {
         val input: Int = 4
         val round: Round = Round(input)
 
+        val expected: String = input.toString()
+
         // act
-        val sut: Int = round.getValue()
+        val sut: String = round.toString()
 
         // assert
-        assertThat(sut).isEqualTo(input)
+        assertThat(sut).isEqualTo(expected)
     }
 }

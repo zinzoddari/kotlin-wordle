@@ -60,7 +60,7 @@ class GameMachine(
         }
 
         // 최종 결과 출력하기
-        printer.result(count, round.getValue(), wordleResults.display())
+        printer.result(count, round, wordleResults.display())
     }
 
     /**

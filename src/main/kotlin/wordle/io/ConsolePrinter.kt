@@ -1,5 +1,7 @@
 package wordle.io
 
+import wordle.domain.Round
+
 /**
  * 값을 출력해주는 객체입니다.
  */
@@ -33,8 +35,8 @@ class ConsolePrinter : Printer {
     /**
      * 최종 결과를 출력합니다.
      */
-    override fun result(count: Int, currentCount: Int, tile: String) {
-        println("${currentCount}/${count}")
+    override fun result(count: Int, round: Round, tile: String) {
+        println("${round}/${count}")
         viewTile(tile)
     }
 

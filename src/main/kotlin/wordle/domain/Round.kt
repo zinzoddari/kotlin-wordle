@@ -30,10 +30,7 @@ value class Round(
         return this.value >= round
     }
 
-    /**
-     * 해당 라운드의 값을 반환합니다.
-     */
-    fun getValue(): Int {
-        return value
+    override fun toString(): String {
+        return "$value"
     }
 }

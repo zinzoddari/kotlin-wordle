@@ -1,5 +1,7 @@
 package wordle.io
 
+import wordle.domain.Round
+
 interface Printer {
     fun introduce()
 
@@ -7,7 +9,7 @@ interface Printer {
 
     fun viewTile(tile: String)
 
-    fun result(count: Int, currentCount: Int, tile: String)
+    fun result(count: Int, round: Round, tile: String)
 
     fun error(message: String)
 }
