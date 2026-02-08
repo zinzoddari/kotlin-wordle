@@ -5,7 +5,7 @@ package wordle.domain
  */
 class Wordle(
     private val validator: WordleWordValidator,
-    private val todayWord: Word
+    private val todayWord: Word,
 ) {
     /**
      * 입력된 단어의 유효성과 정답을 판단합니다.

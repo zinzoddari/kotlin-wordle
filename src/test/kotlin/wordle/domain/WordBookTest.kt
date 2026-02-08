@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 
 class WordBookTest {
-
     private val validator = AnswerWordValidator(3)
 
     @Test
@@ -26,7 +25,6 @@ class WordBookTest {
     @Nested
     @DisplayName("특정 인덱스를 이용하여 단어를 가져올 때,")
     inner class test02 {
-
         @Test
         @DisplayName("인덱스 값이 0보다 작으면, 예외가 발생합니다.")
         fun test01() {
@@ -62,7 +60,7 @@ class WordBookTest {
             val input: String = "AAA"
 
             val wordBook: WordBook = WordBook.from(validator, listOf(input))
-            val index: Int = 0;
+            val index: Int = 0
 
             val expected: Word = Word(input)
 
@@ -77,7 +75,6 @@ class WordBookTest {
     @Nested
     @DisplayName("입력된 단어가 단어장에 존재하는지 판단할 때,")
     inner class test03 {
-
         @Test
         @DisplayName("존재하는 단어일 경우 true를 반환합니다.")
         fun test01() {

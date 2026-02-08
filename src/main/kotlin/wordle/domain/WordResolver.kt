@@ -4,7 +4,7 @@ package wordle.domain
  * 입력 값이 정답과 일치하는지 판단합니다.
  */
 class WordResolver(
-    private val answer: Word
+    private val answer: Word,
 ) {
     private val counter: MutableMap<Char, Int> = init(answer)
 
@@ -38,7 +38,11 @@ class WordResolver(
      * @param answerArray 정답 단어의 문자 배열
      * @param result 각 인덱스별 판정 결과를 저장하는 리스트
      */
-    private fun markCorrect(inputArray: CharArray, answerArray: CharArray, result: MutableList<Result>) {
+    private fun markCorrect(
+        inputArray: CharArray,
+        answerArray: CharArray,
+        result: MutableList<Result>,
+    ) {
         for (i in inputArray.indices) {
             val ch = inputArray[i]
             if (isCorrectAt(i, ch)) {
@@ -65,7 +69,11 @@ class WordResolver(
      * @param answerArray 정답 단어의 문자 배열
      * @param result 각 인덱스별 판정 결과를 저장하는 리스트
      */
-    private fun markPresent(inputArray: CharArray, answerArray: CharArray, result: MutableList<Result>) {
+    private fun markPresent(
+        inputArray: CharArray,
+        answerArray: CharArray,
+        result: MutableList<Result>,
+    ) {
         for (i in inputArray.indices) {
             // 이미 정답 처리된 인덱스는 스킵
             if (result[i] == Result.CORRECT) {
@@ -92,9 +100,10 @@ class WordResolver(
      * @param char 사용자가 입력한 문자
      * @return 해당 인덱스에서 문자가 정확히 일치하면 true, 그렇지 않으면 false
      */
-    private fun isCorrectAt(index: Int, char: Char): Boolean {
-        return answer.check(index, char)
-    }
+    private fun isCorrectAt(
+        index: Int,
+        char: Char,
+    ): Boolean = answer.check(index, char)
 
     /**
      * 주어진 문자[char]가 PRESENT로 판정될 수 있는지 판단합니다.
@@ -142,8 +151,6 @@ class WordResolver(
          * @param answer 오늘의 단어 (정답)
          * @return 오늘의 단어의 char, 빈도수의 map
          */
-        private fun init(answer: Word): MutableMap<Char, Int> {
-            return answer.charCountMap()
-        }
+        private fun init(answer: Word): MutableMap<Char, Int> = answer.charCountMap()
     }
 }

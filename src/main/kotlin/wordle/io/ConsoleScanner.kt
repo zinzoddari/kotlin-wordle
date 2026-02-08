@@ -4,7 +4,6 @@ package wordle.io
  * 외부로부터 입력을 받는 객체입니다.
  */
 class ConsoleScanner : Scanner {
-
     /**
      * 값을 입력 받습니다.
      *

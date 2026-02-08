@@ -6,7 +6,7 @@ package wordle.domain
 class WordleWordValidator(
     private val wordBook: WordBook,
     private val maxLength: Int = 5,
-    private val wordRegex: Regex = ALPHABET_REGEX
+    private val wordRegex: Regex = ALPHABET_REGEX,
 ) : WordValidator {
     /**
      * 유효성 검증을 합니다.

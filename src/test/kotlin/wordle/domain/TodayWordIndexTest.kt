@@ -9,11 +9,14 @@ import org.junit.jupiter.params.provider.MethodSource
 import java.time.LocalDate
 
 class TodayWordIndexTest {
-
     @ParameterizedTest
     @MethodSource("expectedWords")
     @DisplayName("오늘의 단어 순번은 전달받은 날짜 빼기 2021년 6월 19일 나누기 배열의 크기입니다.")
-    fun test01(date: LocalDate, arraySize: Int, expected: Long) {
+    fun test01(
+        date: LocalDate,
+        arraySize: Int,
+        expected: Long,
+    ) {
         // arrange & act
         val sut = TodayWordIndex.fromDate(date, arraySize)
 
@@ -37,15 +40,18 @@ class TodayWordIndexTest {
 
     companion object {
         @JvmStatic
-        fun expectedWords() = listOf(
-            Arguments.of(
-                LocalDate.of(2026, 1, 7),
-                20,
-                3),
-            Arguments.of(
-                LocalDate.of(2021, 6, 19),
-                20,
-                0)
-        )
+        fun expectedWords() =
+            listOf(
+                Arguments.of(
+                    LocalDate.of(2026, 1, 7),
+                    20,
+                    3,
+                ),
+                Arguments.of(
+                    LocalDate.of(2021, 6, 19),
+                    20,
+                    0,
+                ),
+            )
     }
 }

@@ -6,7 +6,7 @@ import wordle.translation.ResultsConverter
  * Wordle 게임의 총 결과를 저장하는 객체
  */
 class WordleResults(
-    private val value: MutableList<Results> = mutableListOf()
+    private val value: MutableList<Results> = mutableListOf(),
 ) {
     /**
      * Wordle 한 판의 결과를 저장합니다.

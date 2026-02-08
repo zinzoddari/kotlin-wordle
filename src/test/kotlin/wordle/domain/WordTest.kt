@@ -6,22 +6,24 @@ import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
-import org.junit.jupiter.params.provider.EmptySource
-import org.junit.jupiter.params.provider.ValueSource
-import org.junit.jupiter.params.provider.MethodSource
-import org.junit.jupiter.params.provider.CsvSource
 import org.junit.jupiter.params.provider.Arguments
+import org.junit.jupiter.params.provider.CsvSource
+import org.junit.jupiter.params.provider.EmptySource
+import org.junit.jupiter.params.provider.MethodSource
+import org.junit.jupiter.params.provider.ValueSource
 
 class WordTest {
-
     @Nested
     @DisplayName("특정 인덱스의 문자열이 같은지 판단할 때,")
     inner class test01 {
-
         @ParameterizedTest
         @MethodSource("wordle.domain.WordTest#expectedWords")
         @DisplayName("입력된 인덱스와 입력된 캐릭터가, Word와 동일한지 판단한다")
-        fun test01(index: Int, char: Char, expected: Boolean) {
+        fun test01(
+            index: Int,
+            char: Char,
+            expected: Boolean,
+        ) {
             // arrange
             val input: Word = Word("APPLE")
 
@@ -49,7 +51,10 @@ class WordTest {
     @ParameterizedTest
     @CsvSource(value = ["APPLE, 5", "CAR, 3", "A, 1"])
     @DisplayName("단어의 길이를 가져옵니다.")
-    fun test02(input: String, expected: Int) {
+    fun test02(
+        input: String,
+        expected: Int,
+    ) {
         // arrange
         val input: Word = Word(input)
 
@@ -80,12 +85,13 @@ class WordTest {
         // arrange
         val input: Word = Word("APPLE")
 
-        val expected: MutableMap<Char, Int> = mutableMapOf(
-            'A' to 1,
-            'P' to 2,
-            'L' to 1,
-            'E' to 1
-        )
+        val expected: MutableMap<Char, Int> =
+            mutableMapOf(
+                'A' to 1,
+                'P' to 2,
+                'L' to 1,
+                'E' to 1,
+            )
 
         // act
         val sut: MutableMap<Char, Int> = input.charCountMap()
@@ -96,9 +102,10 @@ class WordTest {
 
     companion object {
         @JvmStatic
-        fun expectedWords() = listOf(
-            Arguments.of(0, 'A', true),
-            Arguments.of(0, 'B', false),
-        )
+        fun expectedWords() =
+            listOf(
+                Arguments.of(0, 'A', true),
+                Arguments.of(0, 'B', false),
+            )
     }
 }

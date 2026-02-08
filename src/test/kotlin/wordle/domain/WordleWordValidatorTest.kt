@@ -7,7 +7,6 @@ import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
 
 class WordleWordValidatorTest {
-
     private val extractor: WordBook = WordBook.from(AnswerWordValidator(), listOf("zinzo", "devli"))
     private val validator = WordleWordValidator(extractor)
 

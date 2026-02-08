@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Nested
 import org.junit.jupiter.api.Test
 
 class RoundTest {
-
     @Test
     @DisplayName("라운드는 0보다 작으면 예외가 발생합니다.")
     fun test01() {
@@ -37,7 +36,6 @@ class RoundTest {
     @Nested
     @DisplayName("현재 라운드가 입력받은 라운드보다 값이 더 큰지 판단할 때,")
     inner class test03 {
-
         @Test
         @DisplayName("현재 라운드 값이 크면 true를 반환합니다.")
         fun test01() {

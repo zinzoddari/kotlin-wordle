@@ -5,18 +5,14 @@ package wordle.domain
  */
 @JvmInline
 value class Results(
-    val values: List<Result>
+    val values: List<Result>,
 ) : Iterable<Result> {
     /**
      * 정답 여부를 확인합니다.
      *
      * @return 정답 여부
      */
-    fun isAnswer(): Boolean {
-        return values.all { it == Result.CORRECT }
-    }
+    fun isAnswer(): Boolean = values.all { it == Result.CORRECT }
 
-    override fun iterator(): Iterator<Result> {
-        return values.iterator()
-    }
+    override fun iterator(): Iterator<Result> = values.iterator()
 }

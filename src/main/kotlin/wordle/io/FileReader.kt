@@ -7,7 +7,6 @@ import java.io.File
  * 목록으로 반환합니다.
  */
 object FileReader {
-
     /**
      * 파일 이름을 읽어 목록(List<String>)으로 반환합니다.
      *
@@ -20,7 +19,8 @@ object FileReader {
     fun read(name: String): List<String> {
         require(name.isNotBlank()) { "파일명을 입력해주세요." }
 
-        return readFile(name).readLines()
+        return readFile(name)
+            .readLines()
             .map { it.trim() }
     }
 
@@ -49,9 +49,10 @@ object FileReader {
      */
     private fun loadClasspathFile(name: String): File {
         val classLoader = javaClass.classLoader
-        val resource = requireNotNull(classLoader.getResource(name)) {
-            NOT_EXIST_MESSAGE
-        }
+        val resource =
+            requireNotNull(classLoader.getResource(name)) {
+                NOT_EXIST_MESSAGE
+            }
 
         return File(resource.file)
     }

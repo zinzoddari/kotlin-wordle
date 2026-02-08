@@ -6,7 +6,7 @@ import java.time.LocalDate
  * 오늘의 단어를 추출하는 객체
  */
 class TodayWordExtractor(
-    private val wordBook: WordBook
+    private val wordBook: WordBook,
 ) {
     /**
      * 특정 날짜에 해당하는 단어(정답)을 단어장에서 추출합니다.

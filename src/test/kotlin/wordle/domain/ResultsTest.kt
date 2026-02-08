@@ -6,7 +6,6 @@ import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.EnumSource
 
 class ResultsTest {
-
     @ParameterizedTest
     @EnumSource(value = Result::class, mode = EnumSource.Mode.INCLUDE, names = ["CORRECT"])
     @DisplayName("정답이라면 true를 반환합니다.")

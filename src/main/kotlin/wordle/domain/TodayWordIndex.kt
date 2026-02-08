@@ -9,7 +9,7 @@ import java.time.LocalDate
  */
 @JvmInline
 value class TodayWordIndex(
-    val value: Int
+    val value: Int,
 ) {
     companion object {
         const val MIN_INDEX: Int = 0
@@ -25,7 +25,10 @@ value class TodayWordIndex(
          * @param date index를 구하고자 하는 대상 날짜
          * @param arraySize index를 구하고자 하는 대상의 사이즈
          */
-        fun fromDate(date: LocalDate, arraySize: Int): TodayWordIndex {
+        fun fromDate(
+            date: LocalDate,
+            arraySize: Int,
+        ): TodayWordIndex {
             val result = calculate(date, arraySize)
 
             if (result < MIN_INDEX) {
@@ -38,8 +41,9 @@ value class TodayWordIndex(
         /**
          * 주어진 계산식으로 index 값을 구합니다.
          */
-        private fun calculate(date: LocalDate, arraySize: Int): Int {
-            return ((date.toEpochDay() - BASE_DATE.toEpochDay()) % arraySize).toInt()
-        }
+        private fun calculate(
+            date: LocalDate,
+            arraySize: Int,
+        ): Int = ((date.toEpochDay() - BASE_DATE.toEpochDay()) % arraySize).toInt()
     }
 }

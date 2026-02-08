@@ -9,14 +9,14 @@ import org.junit.jupiter.params.provider.EmptySource
 import org.junit.jupiter.params.provider.ValueSource
 
 class FileReaderTest {
-
     @ParameterizedTest
     @EmptySource
     @ValueSource(strings = [" "])
     @DisplayName("파일을 읽을 때, 파일 이름이 빈 값의 경우 예외가 발생합니다.")
     fun test01(name: String) {
         // act & assert
-        Assertions.assertThatThrownBy { FileReader.read(name) }
+        Assertions
+            .assertThatThrownBy { FileReader.read(name) }
             .isInstanceOf(IllegalArgumentException::class.java)
             .hasMessage("파일명을 입력해주세요.")
     }
@@ -28,7 +28,8 @@ class FileReaderTest {
         val name = "notExistFile.txt"
 
         // act & assert
-        Assertions.assertThatThrownBy { FileReader.read(name) }
+        Assertions
+            .assertThatThrownBy { FileReader.read(name) }
             .isInstanceOf(IllegalArgumentException::class.java)
             .hasMessage("파일이 존재하지 않습니다.")
     }

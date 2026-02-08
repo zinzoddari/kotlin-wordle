@@ -9,7 +9,11 @@ interface Printer {
 
     fun viewTile(tile: String)
 
-    fun result(count: Int, round: Round, tile: String)
+    fun result(
+        count: Int,
+        round: Round,
+        tile: String,
+    )
 
     fun error(message: String)
 }
