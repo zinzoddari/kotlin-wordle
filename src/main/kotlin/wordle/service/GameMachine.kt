@@ -20,7 +20,7 @@ import java.time.LocalDate
  */
 class GameMachine(
     private val wordBook: WordBook = WordBookExtractor.extract(WORDS_FILE_NAME),
-    private val todayWord: Word = AnswerGenerator(wordBook).generateAnswer(LocalDate.now()),
+    private val answer: Word = AnswerGenerator(wordBook).generateAnswer(LocalDate.now()),
     private val printer: Printer = ConsolePrinter(),
     private val scanner: Scanner = ConsoleScanner(),
 ) {
@@ -41,7 +41,7 @@ class GameMachine(
         while (!round.isGreaterThanRound(count)) {
             round = round.next()
 
-            val wordle = Wordle(wordleWordValidator, todayWord)
+            val wordle = Wordle(wordleWordValidator, answer)
 
             val results: Results
             try {
