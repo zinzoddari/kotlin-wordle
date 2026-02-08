@@ -5,8 +5,8 @@ package wordle.domain
  */
 class WordleWordValidator(
     private val wordBook: WordBook,
-    private val maxLength: Int = 5,
-    private val wordRegex: Regex = ALPHABET_REGEX,
+    private val maxLength: Int = WordRules.MAX_LENGTH,
+    private val wordRegex: Regex = WordRules.WORD_REGEX,
 ) : WordValidator {
     /**
      * 유효성 검증을 합니다.
@@ -18,9 +18,5 @@ class WordleWordValidator(
         require(wordRegex.matches(input)) { "입력값은 영어여야 합니다." }
 
         require(wordBook.exists(input)) { "입력값은 단어장에 존재하는 단어여야합니다." }
-    }
-
-    companion object {
-        private val ALPHABET_REGEX = Regex("^[a-zA-Z]*$")
     }
 }
