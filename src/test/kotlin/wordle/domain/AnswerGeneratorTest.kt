@@ -15,11 +15,11 @@ class AnswerGeneratorTest {
     fun test01() {
         // arrange
         val answerGenerator = AnswerGenerator(wordExtractor)
-        val today: LocalDate = LocalDate.of(2021, 6, 19)
+        val targetDate: LocalDate = LocalDate.of(2021, 6, 19)
         val expected = Word("zinzo")
 
         // act
-        val sut: Word = answerGenerator.generateAnswer(today)
+        val sut: Word = answerGenerator.generateAnswer(targetDate)
 
         // assert
         assertThat(sut).isEqualTo(expected)

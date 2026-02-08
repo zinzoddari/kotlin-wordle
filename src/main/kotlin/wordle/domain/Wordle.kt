@@ -5,7 +5,7 @@ package wordle.domain
  */
 class Wordle(
     private val validator: WordleWordValidator,
-    private val todayWord: Word,
+    private val answer: Word,
 ) {
     /**
      * 입력된 단어의 유효성과 정답을 판단합니다.
@@ -16,6 +16,6 @@ class Wordle(
     fun round(input: String): Results {
         val word: Word = WordFactory.create(validator, input)
 
-        return WordResolver(todayWord).check(word)
+        return WordResolver(answer).check(word)
     }
 }
