@@ -8,6 +8,7 @@ import wordle.domain.WordBook
 import wordle.domain.Wordle
 import wordle.domain.WordleResults
 import wordle.domain.WordleWordValidator
+import wordle.io.ConsoleCommunicator
 import wordle.io.ConsolePrinter
 import wordle.io.ConsoleScanner
 import wordle.io.Printer
@@ -25,6 +26,8 @@ class GameMachine(
     private val scanner: Scanner = ConsoleScanner(),
 ) {
     private val wordleWordValidator: WordleWordValidator = WordleWordValidator(wordBook)
+
+    private val communicator: ConsoleCommunicator = ConsoleCommunicator(printer, scanner)
 
     /**
      * 게임을 시작합니다.
@@ -45,7 +48,8 @@ class GameMachine(
 
             val results: Results
             try {
-                results = wordle.round(requestInput())
+                val input: String = communicator.requestInput()
+                results = wordle.round(input)
             } catch (e: Exception) {
                 printer.error(e.message ?: "오류가 발생하였습니다.")
                 continue
@@ -63,18 +67,6 @@ class GameMachine(
 
         // 최종 결과 출력하기
         printer.result(count, round, wordleResults.display())
-    }
-
-    /**
-     * 단어 입력을 요청하고
-     * 입력 받은 값은 Word로 반환합니다.
-     *
-     * @return 입력 받은 문자를 이용해 Word 생성
-     */
-    private fun requestInput(): String {
-        printer.requestInput()
-
-        return scanner.input()
     }
 
     companion object {
