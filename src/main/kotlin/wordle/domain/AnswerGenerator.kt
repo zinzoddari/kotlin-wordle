@@ -5,7 +5,7 @@ import java.time.LocalDate
 /**
  * 오늘의 단어를 추출하는 객체
  */
-class TodayWordExtractor(
+class AnswerGenerator(
     private val wordBook: WordBook,
 ) {
     /**
@@ -19,9 +19,9 @@ class TodayWordExtractor(
         val arraySize: Int = wordBook.getAllCount()
 
         // 2.오늘의 단어를 위한 index 추출한다.
-        val todayWordIndex: TodayWordIndex = TodayWordIndex.fromDate(today, arraySize)
+        val answerIndex: AnswerIndex = AnswerIndex.fromDate(today, arraySize)
 
         // 3. 오늘의 단어를 추출한다.
-        return wordBook.getWord(todayWordIndex.value)
+        return wordBook.getWord(answerIndex.value)
     }
 }

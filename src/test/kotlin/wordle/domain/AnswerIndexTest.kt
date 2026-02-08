@@ -8,7 +8,7 @@ import org.junit.jupiter.params.provider.Arguments
 import org.junit.jupiter.params.provider.MethodSource
 import java.time.LocalDate
 
-class TodayWordIndexTest {
+class AnswerIndexTest {
     @ParameterizedTest
     @MethodSource("expectedWords")
     @DisplayName("오늘의 단어 순번은 전달받은 날짜 빼기 2021년 6월 19일 나누기 배열의 크기입니다.")
@@ -18,7 +18,7 @@ class TodayWordIndexTest {
         expected: Long,
     ) {
         // arrange & act
-        val sut = TodayWordIndex.fromDate(date, arraySize)
+        val sut = AnswerIndex.fromDate(date, arraySize)
 
         // assert
         assertThat(sut.value).isEqualTo(expected)
@@ -32,7 +32,7 @@ class TodayWordIndexTest {
         val arraySize = 20
 
         // act
-        val sut = TodayWordIndex.fromDate(date, arraySize)
+        val sut = AnswerIndex.fromDate(date, arraySize)
 
         // assert
         assertThat(sut.value).isEqualTo(0)

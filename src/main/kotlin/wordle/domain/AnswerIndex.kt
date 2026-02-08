@@ -8,7 +8,7 @@ import java.time.LocalDate
  * Index는 `((현재 날짜 - 2021년 6월 19일) % 배열의 크기)` 와 같은 식으로 계산됩니다.
  */
 @JvmInline
-value class TodayWordIndex(
+value class AnswerIndex(
     val value: Int,
 ) {
     companion object {
@@ -28,14 +28,14 @@ value class TodayWordIndex(
         fun fromDate(
             date: LocalDate,
             arraySize: Int,
-        ): TodayWordIndex {
+        ): AnswerIndex {
             val result = calculate(date, arraySize)
 
             if (result < MIN_INDEX) {
-                return TodayWordIndex(MIN_INDEX)
+                return AnswerIndex(MIN_INDEX)
             }
 
-            return TodayWordIndex(result)
+            return AnswerIndex(result)
         }
 
         /**

@@ -1,8 +1,8 @@
 package wordle.service
 
+import wordle.domain.AnswerGenerator
 import wordle.domain.Results
 import wordle.domain.Round
-import wordle.domain.TodayWordExtractor
 import wordle.domain.Word
 import wordle.domain.WordBook
 import wordle.domain.Wordle
@@ -20,7 +20,7 @@ import java.time.LocalDate
  */
 class GameMachine(
     private val wordBook: WordBook = WordBookExtractor.extract(WORDS_FILE_NAME),
-    private val todayWord: Word = TodayWordExtractor(wordBook).generateAnswer(LocalDate.now()),
+    private val todayWord: Word = AnswerGenerator(wordBook).generateAnswer(LocalDate.now()),
     private val printer: Printer = ConsolePrinter(),
     private val scanner: Scanner = ConsoleScanner(),
 ) {

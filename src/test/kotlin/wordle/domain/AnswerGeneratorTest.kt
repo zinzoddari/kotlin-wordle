@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test
 import wordle.translation.WordBookExtractor
 import java.time.LocalDate
 
-class TodayWordExtractorTest {
+class AnswerGeneratorTest {
     val fileName: String = "testWord.txt"
     val wordExtractor = WordBookExtractor.extract(fileName)
 
@@ -14,12 +14,12 @@ class TodayWordExtractorTest {
     @DisplayName("오늘의 단어를 반환합니다.")
     fun test01() {
         // arrange
-        val todayWordExtractor = TodayWordExtractor(wordExtractor)
+        val answerGenerator = AnswerGenerator(wordExtractor)
         val today: LocalDate = LocalDate.of(2021, 6, 19)
         val expected = Word("zinzo")
 
         // act
-        val sut: Word = todayWordExtractor.generateAnswer(today)
+        val sut: Word = answerGenerator.generateAnswer(today)
 
         // assert
         assertThat(sut).isEqualTo(expected)
